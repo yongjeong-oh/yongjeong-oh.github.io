@@ -1,9 +1,0 @@
-# this file contains the social media links and usernames of the author
-# the socials will be displayed in the order they are defined here
-# for more information, please refer to the documentation of jekyll-socials plugin: https://github.com/george-gca/jekyll-socials
-email: yongjeongoh@postech.ac.kr
-scholar_userid: ZjFqe_cAAAAJ
-github_username: # add your GitHub username here
-linkedin_username: # add your LinkedIn username here
-orcid_id: # add your ORCID ID here
-rss_icon: true
