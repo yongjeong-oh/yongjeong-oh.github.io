@@ -186,7 +186,8 @@
   pages       = {621--637},
   month       = {Feb.},
   year        = {2025},
-  abbr        = {TCCN}
+  abbr        = {TCCN},
+  abstract    = {In this paper, we propose a communication-efficient federated learning (FL) framework to enhance the convergence rate of FL under limited uplink capacity. The core idea of our framework is to transmit the values and positions of the top-S entries of a local model update, determined in terms of magnitude. When transmitting the top-S values, we first apply a linear transformation that enforces the transformed values to behave like Gaussian random variables. We then employ a scalar quantizer optimized for Gaussian distributions, leading to minimizing compression errors. When reconstructing the top-S values, we develop a linear minimum mean squared error method based on the Bussgang decomposition. Additionally, we introduce an error feedback strategy to compensate for both compression and reconstruction errors. We analyze the convergence rate of our framework under general considerations, including a non-convex loss function. Based on our analytical results, we optimize the key parameters of our framework to maximize the convergence rate for a given uplink capacity. Simulation results demonstrate that our framework achieves more than a 2.2%, 1.1%, and 1.4% increase in classification accuracy for the MNIST, CIFAR-10, and CIFAR-100 datasets, respectively, compared to state-of-the-art FL frameworks under limited uplink capacity.}
 }
 
 @article{kim2024splitmac,
@@ -198,6 +199,10 @@
   number      = {12},
   pages       = {19760--19775},
   month       = {Dec.},
+  year        = {2024},
+  abbr        = {TWC},
+  abstract    = {This paper presents a novel split learning (SL) framework, referred to as SplitMAC, which reduces the latency of SL by leveraging simultaneous uplink transmission over multiple access channels. The key strategy is to divide devices into multiple groups and allow the devices within the same group to simultaneously transmit their smashed data and device-side models over the multiple access channels. The optimization problem of device grouping to minimize SL latency is formulated, and the benefit of device grouping in reducing the uplink latency of SL is theoretically derived. By examining a two-device grouping case, two asymptotically-optimal algorithms are devised for device grouping in low and high signal-to-noise ratio (SNR) scenarios, respectively. By merging these algorithms, a near-optimal device grouping algorithm is proposed to cover a wide range of SNR. Although our theoretical analysis holds only for the two-device case, our SL framework is also extended to consider practical fading channels and to support a general group size. Simulation results demonstrate that our SL framework with the proposed device grouping algorithm is superior to existing SL frameworks in reducing SL latency.}
+}
   year        = {2024},
   abbr        = {TWC}
 }
@@ -215,7 +220,8 @@
   year              = {2024},
   abbr              = {TWC},
   selected          = {true},
-  google_scholar_id = {IjCSPb-OGe4C}
+  google_scholar_id = {IjCSPb-OGe4C},
+  abstract    = {In this paper, a new communication-efficient federated learning (FL) framework is proposed, inspired by vector quantized compressed sensing. The basic strategy of the proposed framework is to compress the local model update at each device by applying dimensionality reduction followed by vector quantization. Subsequently, the global model update is reconstructed at a parameter server by applying a sparse signal recovery algorithm to the aggregation of the compressed local model updates. By harnessing the benefits of both dimensionality reduction and vector quantization, the proposed framework effectively reduces the communication overhead of local update transmissions. Both the design of the vector quantizer and the key parameters for the compression are optimized so as to minimize the reconstruction error of the global model update under the constraint of wireless link capacity. By considering the reconstruction error, the convergence rate of the proposed framework is also analyzed for a non-convex loss function. Simulation results on the MNIST and FEMNIST datasets demonstrate that the proposed framework can improve classification accuracy by more than 2.4% compared to state-of-the-art FL frameworks when the communication overhead of the local model update transmission is 0.1 bit per local model entry.}
 }
 
 @article{oh2023qcsfl,
@@ -231,7 +237,8 @@
   year              = {2023},
   abbr              = {TWC},
   selected          = {true},
-  google_scholar_id = {qjMakFHDy7sC}
+  google_scholar_id = {qjMakFHDy7sC},
+  abstract    = {In this paper, we present a communication-efficient federated learning framework inspired by quantized compressed sensing. The presented framework consists of gradient compression for wireless devices and gradient reconstruction for a parameter server (PS). Our strategy for gradient compression is to sequentially perform block sparsification, dimensional reduction, and quantization. By leveraging both dimension reduction and quantization, our strategy can achieve a higher compression ratio than one-bit gradient compression. For accurate aggregation of local gradients from the compressed signals, we put forth an approximate minimum mean square error (MMSE) approach for gradient reconstruction using the expectation-maximization generalized-approximate-message-passing (EM-GAMP) algorithm. Assuming Bernoulli Gaussian-mixture prior, this algorithm iteratively updates the posterior mean and variance of local gradients from the compressed signals. We also present a low-complexity approach for the gradient reconstruction. In this approach, we use the Bussgang theorem to aggregate local gradients from the compressed signals, then compute an approximate MMSE estimate of the aggregated gradient using the EM-GAMP algorithm. We also provide a convergence rate analysis of the presented framework. Using the MNIST dataset, we demonstrate that the presented framework achieves almost identical performance with the case that performs no compression, while significantly reducing communication overhead for federated learning.}
 }
 
 @article{oh2021ccnnloc,
@@ -245,6 +252,7 @@
   month       = {May},
   year        = {2021},
   abbr        = {EL},
+  abstract    = {To enable accurate and reliable indoor localization in a multi-building environment, a novel constrained convolutional neural network (CNN)-based indoor localization system (C-CNNLoc) is proposed using WiFi fingerprinting approach. The proposed network has a sequential structure that firstly classifies a building, followed by estimating the user's location coordinate within the pre-detected building. Furthermore, the location accuracy is improved by introducing a new loss function that incorporates a penalty term associated with the building boundary. Experimental results illustrate that the proposed method outperforms the existing solutions on the average distance error. The gain comes from that the approach tailored to a multi-building indoor localization with the sequential structure is prone to successfully correct outliers, that is, predicted location coordinates that lie outside the buildings.}
 }
 
 % =============================================================================
@@ -270,7 +278,8 @@
   address     = {Rabat, Morocco},
   month       = {Mar.},
   year        = {2026},
-  abbr        = {EACL}
+  abbr        = {EACL},
+  abstract    = {Federated fine-tuning of foundation models is impeded by the need to communicate billions of parameters. Low-rank adaptation (LoRA) alleviates this by updating only compact adapter matrices. However, varying client device capabilities lead to different adapter ranks, causing rank heterogeneity that undermines aggregation, and existing reconciliation methods still incur bias or inefficiency. To address this challenge, we propose RB-LoRA, a principled rank-balanced aggregation framework that decomposes each update into rank-wise components and aligns them using analytically derived weights. Experiments on both language and vision models demonstrate consistent improvements under one and three rounds of communication in federated learning.}
 }
 
 @inproceedings{shin2025escmvq,
@@ -292,7 +301,8 @@
   address     = {Montreal, Canada},
   month       = {Jun.},
   year        = {2025},
-  abbr        = {ICC}
+  abbr        = {ICC},
+  abstract    = {Semantic communications provide significant performance gains over traditional communications by transmitting task-relevant semantic features through wireless channels. However, most existing studies rely on end-to-end (E2E) training of neural-type encoders and decoders to ensure effective transmission of these semantic features. To enable semantic communications without relying on E2E training, this paper presents a vision transformer (ViT)-based semantic communication system with importance-aware quantization (IAQ) for wireless image transmission. The core idea of the presented system is to leverage the attention scores of a pretrained ViT model to quantify the importance levels of image patches. Then, our IAQ framework assigns different quantization bits to image patches based on their importance levels. This is achieved by formulating a weighted quantization error minimization problem, where the weight is set to be an increasing function of the attention score. Then, an optimal incremental bit-allocation method and a low-complexity water-filling method are devised to solve the formulated problem. Simulations on multi-view image classification tasks show that our IAQ framework outperforms existing quantization methods.}
 }
 
 @inproceedings{oh2024globecom,
@@ -303,7 +313,8 @@
   address     = {Cape Town, South Africa},
   month       = {Dec.},
   year        = {2024},
-  abbr        = {GLOBECOM}
+  abbr        = {GLOBECOM},
+  abstract    = {In this paper, we introduce a novel deep learning-assisted parallel interference cancellation (PIC) framework for joint activity detection (AD) and channel estimation (CE) in up-link grant-free non-orthogonal multiple access (NOMA) systems. Our framework employs an iterative and parallel interference removal strategy inspired by PIC, enhanced with deep learning to jointly tackle the AD and CE problems. The proposed framework consists of multiple uniform stages, each containing trainable CE modules and non-parameterized IC modules. Additionally, it integrates AD modules that estimate each device activity in a parallel manner by leveraging the received signals after interference removal processes. Through joint loss functions and IC modules, the proposed framework supports end-to-end training, contributing to enhanced performances of AD and CE. Simulation results demonstrate the superiority of the proposed framework over traditional techniques, exhibiting enhanced performances of AD and CE while maintaining lower computational complexity.}
 }
 
 @inproceedings{park2024globecom,
@@ -314,7 +325,8 @@
   address     = {Cape Town, South Africa},
   month       = {Dec.},
   year        = {2024},
-  abbr        = {GLOBECOM}
+  abbr        = {GLOBECOM},
+  abstract    = {This paper proposes a novel joint source-channel coding (JSCC) approach for robust digital semantic communications. When employing a binary-output JSCC encoder with digital modulation, end-to-end training becomes challenging due to the unpredictable dynamics of channel conditions. To address this challenge, we first develop a new demodulation method which assesses the uncertainty of the demodulation output to improve the robustness of the digital semantic communication system. We then devise a robust training strategy which enhances the robustness and flexibility of the JSCC encoder and decoder against diverse channel conditions. To this end, we model the relationship between the encoder's output and decoder's input using binary symmetric erasure channels and then sample the parameters of these channels from diverse distributions. Using simulations, we demonstrate the superior performance of the proposed JSCC approach for image classification and reconstruction tasks compared to existing JSCC approaches.}
 }
 
 @inproceedings{park2024icc,
@@ -325,7 +337,8 @@
   address     = {Denver, CO, USA},
   month       = {Jun.},
   year        = {2024},
-  abbr        = {ICC}
+  abbr        = {ICC},
+  abstract    = {This paper presents a robust beam alignment technique for millimeter-wave communications in low signal-to-noise ratio (SNR) regimes. The basic strategy of this technique involves the repeated transmission of beam candidates, aimed at minimizing the beam misalignment probability induced by noise. In this strategy, however, the beam training overhead becomes impractically significant when both the numbers of beam candidates and beam repetitions are large. To address this challenge, the presented technique aims at optimizing both the selection of beam candidates and the number of repetitions for each candidate based on channel prior information. In the presented technique, a deep neural network is employed to learn the prior probability of the optimal beam at each location. The beam misalignment probability is then analyzed based on the channel prior, and a practical algorithm is developed to find the optimal beam repetition strategy to minimize the beam misalignment probability. Simulation results using the DeepMIMO dataset demonstrate the superior performance of the presented technique in dynamic low-SNR communication environments compared to existing beam alignment techniques.}
 }
 
 @inproceedings{oh2022vqcsworkshop,
@@ -337,7 +350,8 @@
   pages       = {365--370},
   month       = {Dec.},
   year        = {2022},
-  abbr        = {GC Wkshps}
+  abbr        = {GC Wkshps},
+  abstract    = {In this paper, a communication-efficient federated learning (FL) framework is proposed, which leverages ideas from vector quantized compressed sensing, for the first time, to compress the local model updates at wireless devices in FL. For the compression, each local model update is projected onto a lower dimensional space; then, the projected local model update is quantized by using a vector quantizer. The global model update at a parameter server is reconstructed by using a sparse signal recovery algorithm on the aggregation of the compressed local model updates. A key feature of our compression strategy is that the local model update after the projection is effectively modeled as a Gaussian random vector by the central limit theorem. Inspired by this feature, the optimal vector quantizer is derived for minimizing the compression error of the local model update. Simulation results on the MNIST dataset demonstrate that the proposed framework that uses 0.5 bit to represent each local model update entry shows less than a 1% decrease in classification accuracy compared to FL without local update compression.}
 }
 
 @inproceedings{oh2021qcsworkshop,
@@ -349,7 +363,8 @@
   pages       = {1--6},
   month       = {Dec.},
   year        = {2021},
-  abbr        = {GC Wkshps}
+  abbr        = {GC Wkshps},
+  abstract    = {Federated learning (FL) is a decentralized artificial intelligence technique for training a global model on a parameter server (PS) through collaboration with wireless devices, each with its own local training data set. In this paper, we present a communication-efficient FL framework which consists of gradient compression and reconstruction strategies based on quantized compressed sensing (QCS). The key idea of the gradient compression strategy is to compress-and-quantize a local gradient vector computed at each device after sparsifying this vector in a block wise fashion. Our gradient compression strategy can make communication overhead less than one bit per gradient entry. For accurate reconstruction of the local gradient from the compressed signals at the PS, we employ a expectation-maximization generalized-approximate-message-passing algorithm. The algorithm iteratively computes an approximate minimum mean square error solution of the local gradient, while learning the unknown model parameters of the Bernoulli Gaussian-mixture prior. Using the MNIST data set, we demonstrate that the presented FL framework can achieve almost identical classification performance with the case that performs no compression, while achieving a significant reduction of communication overhead.}
 }
 
 % =============================================================================
@@ -367,7 +382,8 @@
   month       = {May},
   year        = {2021},
   abbr        = {JKICS},
-  paper       = {https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10557254}
+  paper       = {https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10557254},
+  abstract    = {In the recent 5G era, according to the rapid development of Internet-of-Things technologies along with smart devices and expansion of its application, the indoor localization techniques using wireless signals have been extensively studied. It is a very challenging task to develop an indoor localization technique with high location accuracy and low complexity in various indoor environments. Among many indoor localization techniques, fingerprint technique using Wi-Fi signals has been received the greatest interest from academia and industry because location estimation is possible without the need for installing separate equipment and constructing infrastructure. Recently, the accuracy of indoor localization has been largely improved as machine learning and deep learning technologies, which have been rapidly developed, have been incorporated into Wi-Fi fingerprints. Therefore, in this paper, we introduce the state-of-the-art trends and pros-and-cons of indoor localization techniques based on Wi-Fi fingerprint utilizing machine learning and deep learning technologies. Furthermore, we discuss new research directions and issues based on the described trends of indoor localization techniques for Wi-Fi fingerprint.}
 }
 
 % =============================================================================
