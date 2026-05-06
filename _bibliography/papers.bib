@@ -1,115 +1,491 @@
 ---
 ---
 
-@string{aps = {American Physical Society,}}
+% =============================================================================
+% International Journal Papers
+% =============================================================================
 
-@book{einstein1920relativity,
-  title     = {Relativity: the Special and General Theory},
-  author    = {Einstein, Albert},
-  year      = {1920},
-  publisher = {Methuen & Co Ltd},
-  html      = {relativity.html}
+@misc{oh2026towards,
+  keywords    = {submitted},
+  topics      = {Semantic Communications, AI-Native Air Interface},
+  title       = {Towards Optimal Semantic Communications: Reconsidering the Role of Semantic Feature Channels},
+  author      = {Oh, Yongjeong and Park, Jihong and Choi, Jinho and Jeon, Yo-Seb},
+  abstract    = {This paper investigates the optimization of transmitting the encoder outputs, termed semantic features (SFs), in semantic communication (SC). We begin by modeling the entire communication process from the encoder output to the decoder input, encompassing the physical channel and all transceiver operations, as the SF channel, thereby establishing an encoder-SF channel-decoder pipeline. In contrast to prior studies that assume a fixed SF channel, we note that the SF channel is configurable, as its characteristics are shaped by various transmission and reception strategies, such as power allocation. Based on this observation, we formulate the SF channel optimization problem under a mutual information constraint between the SFs and their reconstructions, and analytically derive the optimal SF channel under a linear encoder-decoder structure and Gaussian source assumption. Building on this analysis, we propose a joint optimization framework for the encoder-decoder and SF channel applicable to both analog and digital SC systems. To realize the optimized SF channel, we also propose a physical-layer calibration strategy that enables real-time power control and adaptation to varying channel conditions. Simulation results demonstrate that the proposed SF channel optimization achieves superior task performance under various communication environments.},
+  abbr        = {TWC},
+  award       = {**Bronze Prize**, 32nd SAMSUNG Humantech Paper Awards (2026).},
+  award_name  = {Award},
+  selected    = {true}
 }
 
-@book{einstein1956investigations,
-  bibtex_show = {true},
-  title       = {Investigations on the Theory of the Brownian Movement},
-  author      = {Einstein, Albert},
-  year        = {1956},
-  publisher   = {Courier Corporation},
-  preview     = {brownian-motion.gif}
+@misc{kim2026channel,
+  keywords    = {submitted},
+  title       = {Unequal Error Protection for Digital Semantic Communication with Channel Coding},
+  author      = {Kim, Seonjung and Oh, Yongjeong and Kim, Yongjune and Lee, Namyoon and Jeon, Yo-Seb},
+  abbr        = {TCOM},
+  paper       = {https://arxiv.org/abs/2508.03381},
+  abstract    = {This paper investigates unequal error protection (UEP) in digital semantic communication, where semantically important bits require substantially higher reliability than less critical ones. To characterize this heterogeneity, we introduce a novel perspective that treats learned bit-flip probabilities of semantic bits as target error protection levels, thereby directly linking semantic importance to bit-level reliability. This formulation reveals that the required protection levels of the semantic bits may differ by several orders of magnitude, making short-block coding more advantageous than conventional long-block designs. Motivated by this, we develop two UEP frameworks that minimize total blocklength under heterogeneous reliability constraints. First, we propose a bit-level UEP framework based on repetition coding, providing an analytically tractable solution that precisely meets per-bit protection requirements. Second, to improve energy and blocklength efficiency, we design a block-level UEP framework in which the semantic bits are partitioned into short blocks with similar protection levels. Guided by finite blocklength capacity analysis, we derive a closed-form threshold condition for beneficial partitioning and develop a systematic algorithm for integrating modern channel codes. Simulation results on image transmission tasks demonstrate substantial gains in both task performance and transmission efficiency compared with conventional equal-protection schemes.}
 }
 
-@article{einstein1950meaning,
-  abbr        = {AJP},
-  bibtex_show = {true},
-  title       = {The meaning of relativity},
-  author      = {Einstein, Albert and Taub, AH},
-  journal     = {American Journal of Physics},
-  volume      = {18},
-  number      = {6},
-  pages       = {403--404},
-  year        = {1950},
-  publisher   = {American Association of Physics Teachers}
+@misc{park2026rateadaptive,
+  keywords    = {submitted},
+  title       = {Rate-Adaptive Semantic Communication via Multi-Stage Vector Quantization},
+  author      = {Park, Jinsung and Shin, Junyong and Oh, Yongjeong and Park, Jihun and Jeon, Yo-Seb},
+  abbr        = {TCOM},
+  abstract    = {This paper proposes a novel framework for rate-adaptive semantic communication based on multi-stage vector quantization (VQ), termed MSVQ-SC. Unlike conventional single-stage VQ approaches, which require exponentially larger codebooks to achieve higher fidelity, the proposed framework decomposes the quantization process into multiple stages and dynamically activates both stages and individual VQ modules. This design enables fine-grained rate adaptation under varying bit constraints while mitigating computational complexity and the codebook collapse problem. To optimize performance, we formulate a module selection problem that minimizes task loss subject to a rate constraint and solve it using an incremental allocation algorithm. Furthermore, we extend the framework by incorporating entropy coding to exploit non-uniform codeword distributions, further reducing communication overhead. Simulation results on the CIFAR-10 dataset demonstrate that the proposed framework outperforms existing digital semantic communication methods, achieving superior semantic fidelity with lower complexity while providing flexible and fine-grained rate control.}
 }
 
-@article{PhysRev.47.777,
-  abbr              = {PhysRev},
-  title             = {Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author            = {Einstein*†, A. and Podolsky*, B. and Rosen*, N.},
-  abstract          = {In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal           = {Phys. Rev.},
-  location          = {New Jersey},
-  volume            = {47},
-  issue             = {10},
-  pages             = {777--780},
-  numpages          = {0},
-  year              = {1935},
-  month             = {May},
-  publisher         = aps,
-  doi               = {10.1103/PhysRev.47.777},
-  url               = {https://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html              = {https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf               = {example_pdf.pdf},
-  altmetric         = {248277},
-  dimensions        = {true},
-  google_scholar_id = {qyhmnyLat1gC},
-  video             = {https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ},
-  additional_info   = {. *More Information* can be [found here](https://github.com/alshedivat/al-folio/)},
-  annotation        = {* Example use of superscripts<br>† Albert Einstein},
+@misc{park2026priorbeam,
+  keywords    = {submitted},
+  title       = {Prior-Aware Robust Beam Alignment for Low-SNR Millimeter-Wave Communications},
+  author      = {Park, Jihun and Oh, Yongjeong and Yun, Jaewon and Kim, Seonjung and Jeon, Yo-Seb},
+  abbr        = {TCOM},
+  abstract    = {This paper presents a robust beam alignment technique for millimeter-wave communications in low signal-to-noise ratio (SNR) environments. The core strategy of our technique is to repeatedly transmit the most probable beam candidates to reduce beam misalignment probability induced by noise. Specifically, for a given beam training overhead, both the selection of candidates and the number of repetitions for each beam candidate are optimized based on channel prior information. To achieve this, a deep neural network is employed to learn the prior probability of the optimal beam at each location. The beam misalignment probability is then analyzed based on the channel prior, forming the basis for an optimization problem aimed at minimizing the analyzed beam misalignment probability. A closed-form solution is derived for a special case with two beam candidates, and an efficient algorithm is developed for general cases with multiple beam candidates. Simulation results using the DeepMIMO dataset demonstrate the superior performance of our technique in dynamic low-SNR communication environments when compared to existing beam alignment techniques.}
+}
+
+@article{park2026importance,
+  keywords    = {intl_journal},
+  title       = {Importance-Aware Semantic Communication in MIMO-OFDM Systems Using Vision Transformer},
+  author      = {Park, Joohyuk and Oh, Yongjeong and Park, Jihun and Jeon, Yo-Seb},
+  journal     = {IEEE Transactions on Wireless Communications},
+  volume      = {25},
+  pages       = {13494--13510},
+  month       = {Mar.},
+  year        = {2026},
+  abbr        = {TWC},
+  paper       = {https://ieeexplore.ieee.org/document/11429584},
+  doi         = {10.1109/TWC.2026.3665639},
+  abstract    = {This paper presents a novel importance-aware quantization, subcarrier mapping, and power allocation (IA-QSMPA) framework for semantic communication in multiple-input multiple-output orthogonal frequency division multiplexing (MIMO-OFDM) systems, empowered by a pretrained Vision Transformer (ViT). The proposed framework exploits attention-based importance extracted from a pretrained ViT to jointly optimize quantization levels, subcarrier mapping, and power allocation. Specifically, IA-QSMPA maps semantically important features to high-quality subchannels and allocates resources in accordance with their contribution to task performance and communication latency. To efficiently solve the resulting nonconvex optimization problem, a block coordinate descent algorithm is employed. The framework is further extended to operate under finite blocklength transmission, where communication errors may occur. In this setting, a segment-wise linear approximation of the channel dispersion penalty is introduced to enable efficient joint optimization under practical constraints. Simulation results on multi-view image classification and single-object detection tasks demonstrate that IA-QSMPA significantly outperforms conventional methods in both ideal and finite blocklength transmission scenarios, achieving superior task performance and communication efficiency.}
+}
+
+@article{shin2026escmvq,
+  keywords    = {intl_journal},
+  title       = {ESC-MVQ: End-to-End Semantic Communication With Multi-Codebook Vector Quantization},
+  author      = {Shin, Junyong and Oh, Yongjeong and Park, Jinsung and Park, Joohyuk and Jeon, Yo-Seb},
+  journal     = {IEEE Transactions on Wireless Communications},
+  volume      = {25},
+  pages       = {3785--3800},
+  month       = {Jan.},
+  year        = {2026},
+  abbr        = {TWC},
+  abstract    = {This paper proposes a novel end-to-end digital semantic communication framework based on multi-codebook vector quantization (VQ), referred to as ESC-MVQ. Unlike prior approaches that rely on end-to-end training with a specific power or modulation scheme, often under a particular channel condition, ESC-MVQ models a channel transfer function as parallel binary symmetric channels (BSCs) with trainable bit-flip probabilities. Building on this model, ESC-MVQ jointly trains multiple VQ codebooks and their associated bit-flip probabilities with a single encoder-decoder pair. To maximize inference performance when deploying ESC-MVQ in digital communication systems, we devise an optimal communication strategy that jointly optimizes codebook assignment, adaptive modulation, and power allocation. To this end, we develop an iterative algorithm that selects the most suitable VQ codebook for semantic features and flexibly allocates power and modulation schemes across the transmitted symbols. Simulation results demonstrate that ESC-MVQ, using a single encoder-decoder pair, outperforms existing digital semantic communication methods in both performance and memory efficiency, offering a scalable and adaptive solution for realizing digital semantic communication in diverse channel conditions.}
+}
+
+@article{oh2025blindtraining,
+  keywords          = {intl_journal},
+  topics            = {Semantic Communications, AI-Native Air Interface},
+  title             = {Blind Training for Channel-Adaptive Digital Semantic Communications},
+  author            = {Oh, Yongjeong and Park, Joohyuk and Choi, Jinho and Park, Jihong and Jeon, Yo-Seb},
+  journal           = {IEEE Transactions on Communications},
+  volume            = {73},
+  number            = {11},
+  pages             = {11274--11290},
+  month             = {Nov.},
+  year              = {2025},
+  abbr              = {TCOM},
   selected          = {true},
-  inspirehep_id     = {3255}
+  google_scholar_id = {roLk4NBRz8UC},
+  abstract          = {Semantic encoders and decoders for digital semantic communication (SC) often struggle to adapt to variations in unpredictable channel environments and diverse system designs. To address these challenges, this paper proposes a novel framework for training semantic encoders and decoders to enable channel-adaptive digital SC. The core idea is to use binary symmetric channel (BSC) as a universal representation of generic digital communications, eliminating the need to specify channel environments or system designs. Based on this idea, our framework employs parallel BSCs to equivalently model the relationship between the encoder's output and the decoder's input. The bit-flip probabilities of these BSCs are treated as trainable parameters during end-to-end training, with varying levels of regularization applied to address diverse requirements in practical systems. The advantage of our framework is justified by developing a training-aware communication strategy for the inference stage. This strategy makes communication bit errors align with the pre-trained bit-flip probabilities by adaptively selecting power and modulation levels based on practical requirements and channel conditions. Simulation results demonstrate that the proposed framework outperforms existing training approaches in terms of both task performance and power consumption.}
 }
 
-@article{einstein1905molekularkinetischen,
-  title     = {{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author    = {Einstein, A.},
-  journal   = {Annalen der physik},
-  volume    = {322},
-  number    = {8},
-  pages     = {549--560},
-  year      = {1905},
-  publisher = {Wiley Online Library}
+@article{oh2025berperspective,
+  keywords    = {intl_journal},
+  title       = {Deep Learning-Based Modulation and Power Control: A BER Perspective},
+  author      = {Oh, Yongjeong and Park, Jihong and Choi, Jinho and Jeon, Yo-Seb},
+  journal     = {IEEE Communications Letters},
+  volume      = {29},
+  number      = {11},
+  pages       = {2616--2620},
+  month       = {Nov.},
+  year        = {2025},
+  abbr        = {CL},
+  abstract    = {This letter presents a deep learning (DL)-based modulation and power control (MPC) framework for two bit error rate (BER)-based optimization problems under parallel fading channels. First, we aim to minimize BER by designing two neural networks, ModNet and PowerNet, which optimize modulation and power levels, respectively, while satisfying their constraints. Second, we seek to minimize total power while ensuring a target BER by training ModNet for modulation level decision, followed by a convex optimization process for power allocation. Simulation results validate the effectiveness of the proposed DL-based MPC framework, demonstrating lower BER, reduced total power consumption, and faster simulation time compared to existing MPC baselines.}
 }
 
-@article{einstein1905movement,
-  abbr    = {Ann. Phys.},
-  title   = {Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author  = {Einstein, A.},
-  journal = {Ann. Phys.},
-  volume  = {17},
-  pages   = {549--560},
-  year    = {1905}
+@article{park2025e2eofdm,
+  keywords    = {intl_journal},
+  title       = {End-to-End Training and Adaptive Transmission for OFDM-Based Semantic Communication},
+  author      = {Park, Jihun and Kim, Hyeonwoo and Shin, Junyong and Oh, Yongjeong and Jeon, Yo-Seb},
+  journal     = {ICT Express},
+  volume      = {11},
+  number      = {5},
+  pages       = {919--924},
+  month       = {Oct.},
+  year        = {2025},
+  abbr        = {ICTE},
+  abstract    = {This paper presents a semantic communication framework for orthogonal frequency division multiplexing (OFDM) systems. In this framework, we first introduce an end-to-end training strategy which leverages binary symmetric channels (BSCs) to model OFDM communication errors, thereby eliminating the need to specify channel distributions, modulation order, and transmission power during end-to-end training. We then propose a joint modulation order and power optimization scheme for OFDM systems designed for our end-to-end training strategy. Our optimization aims to maximize the transmission rate while satisfying target bit-error rate and power constraints. Through simulations, we demonstrate the superiority of our framework compared to existing schemes.}
 }
 
-@article{einstein1905electrodynamics,
-  title  = {On the electrodynamics of moving bodies},
-  author = {Einstein, A.},
-  year   = {1905}
+@article{park2025vit,
+  keywords          = {intl_journal},
+  title             = {Vision Transformer-Based Semantic Communications With Importance-Aware Quantization},
+  author            = {Park, Joohyuk and Oh, Yongjeong and Kim, Yongjune and Jeon, Yo-Seb},
+  journal           = {IEEE Internet of Things Journal},
+  volume            = {12},
+  number            = {17},
+  pages             = {35662--35677},
+  month             = {Sep.},
+  year              = {2025},
+  abbr              = {IoT-J},
+  google_scholar_id = {LkGwnXOMwfcC},
+  abstract          = {Semantic communications provide significant performance gains over traditional communications by transmitting task-relevant semantic features through wireless channels. However, most existing studies rely on end-to-end (E2E) training of neural-type encoders and decoders to ensure effective transmission of these semantic features. To enable semantic communications without relying on E2E training, this article presents a vision transformer (ViT)-based semantic communication system with importance-aware quantization (IAQ) for wireless image transmission. The core idea of the presented system is to leverage the attention scores of a pretrained ViT model to quantify the importance levels of image patches. Based on this idea, our IAQ framework assigns different quantization bits to image patches based on their importance levels. This is achieved by formulating a weighted quantization error minimization problem, where the weight is set to be an increasing function of the attention score. Then, an optimal incremental allocation method and a low-complexity water-filling method are devised to solve the formulated problem. Our framework is further extended for realistic digital communication systems by modifying the bit allocation problem and the corresponding allocation methods based on an equivalent binary symmetric channel (BSC) model. Simulations on single-view image classification, multiview image classification, and single-object detection tasks demonstrate that our IAQ framework outperforms conventional image compression methods under both error-free and realistic communication scenarios.}
 }
 
-@article{einstein1905photoelectriceffect,
-  bibtex_show = {true},
-  abbr        = {Ann. Phys.},
-  title       = {{{\"U}ber einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt}},
-  author      = {Albert Einstein},
-  abstract    = {This is the abstract text.},
-  journal     = {Ann. Phys.},
-  volume      = {322},
-  number      = {6},
-  pages       = {132--148},
-  year        = {1905},
-  doi         = {10.1002/andp.19053220607},
-  award       = {Albert Einstein receveid the **Nobel Prize in Physics** 1921 *for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect*},
-  award_name  = {Nobel Prize}
+@article{oh2025grantfree,
+  keywords    = {intl_journal},
+  title       = {Deep Learning-Assisted Parallel Interference Cancellation for Grant-Free NOMA in Machine-Type Communication},
+  author      = {Oh, Yongjeong and Jo, Jaehong and Shim, Byonghyo and Jeon, Yo-Seb},
+  journal     = {IEEE Internet of Things Journal},
+  volume      = {12},
+  number      = {13},
+  pages       = {24041--24056},
+  month       = {Jul.},
+  year        = {2025},
+  abbr        = {IoT-J},
+  abstract    = {In this article, we present a novel approach for joint activity detection (AD), channel estimation (CE), and data detection (DD) in uplink grant-free nonorthogonal multiple access (NOMA) systems. Our approach employs an iterative and parallel interference removal strategy inspired by parallel interference cancellation (PIC), enhanced with deep learning to jointly tackle the AD, CE, and DD problems. Based on this approach, we develop three PIC frameworks, each of which is designed for either coherent or noncoherence schemes. The first framework performs joint AD and CE using received pilot signals in the coherent scheme. Building upon this framework, the second framework utilizes both the received pilot and data signals for CE, further enhancing the performances of AD, CE, and DD in the coherent scheme. The third framework is designed to accommodate the noncoherent scheme involving a small number of data bits, which simultaneously performs AD and DD. Through joint loss functions and interference cancellation modules, our approach supports end-to-end training, contributing to enhanced performances of AD, CE, and DD for both coherent and noncoherent schemes. Simulation results demonstrate the superiority of our approach over traditional techniques, exhibiting enhanced performances of AD, CE, and DD while maintaining lower computational complexity.}
 }
 
-@book{przibram1967letters,
-  bibtex_show = {true},
-  title       = {Letters on wave mechanics},
-  author      = {Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year        = {1967},
-  publisher   = {Vision},
-  preview     = {wave-mechanics.gif},
-  abbr        = {Vision}
+@article{oh2025splitlearning,
+  keywords          = {intl_journal},
+  topics            = {Distributed Learning},
+  title             = {Communication-Efficient Split Learning via Adaptive Feature-Wise Compression},
+  author            = {Oh, Yongjeong and Lee, Jaeho and Brinton, Christopher G. and Jeon, Yo-Seb},
+  journal           = {IEEE Transactions on Neural Networks and Learning Systems},
+  volume            = {36},
+  number            = {6},
+  pages             = {10844--10858},
+  month             = {Jun.},
+  year              = {2025},
+  abbr              = {TNNLS},
+  selected          = {true},
+  google_scholar_id = {Y0pCki6q_DkC},
+  abstract          = {This article proposes a novel communication-efficient split learning (SL) framework, named SplitFC, which reduces the communication overhead required for transmitting intermediate features and gradient vectors during the SL training process. The key idea of SplitFC is to leverage different dispersion degrees exhibited in the columns of the matrices. SplitFC incorporates two compression strategies: 1) adaptive feature-wise dropout and 2) adaptive feature-wise quantization. In the first strategy, the intermediate feature vectors are dropped with adaptive dropout probabilities determined based on the standard deviation of these vectors. Then, by the chain rule, the intermediate gradient vectors associated with the dropped feature vectors are also dropped. In the second strategy, the non-dropped intermediate feature and gradient vectors are quantized using adaptive quantization levels determined based on the ranges of the vectors. To minimize the quantization error, the optimal quantization levels of this strategy are derived in a closed-form expression. Simulation results on the MNIST, CIFAR-100, and CelebA datasets demonstrate that SplitFC outperforms state-of-the-art SL frameworks by significantly reducing communication overheads while maintaining high accuracy.}
+}
+
+@article{park2025jscc,
+  keywords          = {intl_journal},
+  title             = {Joint Source-Channel Coding for Channel-Adaptive Digital Semantic Communications},
+  author            = {Park, Joohyuk and Oh, Yongjeong and Kim, Seonjung and Jeon, Yo-Seb},
+  journal           = {IEEE Transactions on Cognitive Communications and Networking},
+  volume             = {11},
+  number            = {1},
+  pages             = {75--89},
+  month             = {Feb.},
+  year              = {2025},
+  abbr              = {TCCN},
+  google_scholar_id = {eQOLeE2rZwMC},
+  abstract          = {In this paper, we propose a novel joint source-channel coding (JSCC) approach for channel-adaptive digital semantic communications. In semantic communication systems with digital modulation and demodulation, robust design of JSCC encoder and decoder becomes challenging not only due to the unpredictable dynamics of channel conditions but also due to diverse modulation orders. To address this challenge, we first develop a new demodulation method which assesses the uncertainty of the demodulation output to improve the robustness of the digital semantic communication system. We then devise a robust training strategy which enhances the robustness and flexibility of the JSCC encoder and decoder against diverse channel conditions and modulation orders. To this end, we model the relationship between the encoder's output and decoder's input using binary symmetric erasure channels and then sample the parameters of these channels from diverse distributions. We also develop a channel-adaptive modulation technique for an inference phase, in order to reduce the communication latency while maintaining task performance. In this technique, we adaptively determine modulation orders for the latent variables based on channel conditions. Using simulations, we demonstrate the superior performance of the proposed JSCC approach for image classification, reconstruction, and retrieval tasks compared to existing JSCC approaches.}
+}
+
+@article{yun2025capacitylimited,
+  keywords    = {intl_journal},
+  title       = {Communication-Efficient Federated Learning over Capacity-Limited Wireless Networks},
+  author      = {Yun, Jaewon and Oh, Yongjeong and Jeon, Yo-Seb and Poor, H. Vincent},
+  journal     = {IEEE Transactions on Cognitive Communications and Networking},
+  volume      = {11},
+  number      = {1},
+  pages       = {621--637},
+  month       = {Feb.},
+  year        = {2025},
+  abbr        = {TCCN}
+}
+
+@article{kim2024splitmac,
+  keywords    = {intl_journal},
+  title       = {{SplitMAC}: Wireless Split Learning over Multiple Access Channels},
+  author      = {Kim, Seonjung and Oh, Yongjeong and Jeon, Yo-Seb},
+  journal     = {IEEE Transactions on Wireless Communications},
+  volume      = {23},
+  number      = {12},
+  pages       = {19760--19775},
+  month       = {Dec.},
+  year        = {2024},
+  abbr        = {TWC}
+}
+
+@article{oh2024fedvqcs,
+  keywords          = {intl_journal},
+  topics            = {Distributed Learning},
+  title             = {{FedVQCS}: Federated Learning via Vector Quantized Compressed Sensing},
+  author            = {Oh, Yongjeong and Jeon, Yo-Seb and Chen, Mingzhe and Saad, Walid},
+  journal           = {IEEE Transactions on Wireless Communications},
+  volume            = {23},
+  number            = {3},
+  pages             = {1755--1770},
+  month             = {Mar.},
+  year              = {2024},
+  abbr              = {TWC},
+  selected          = {true},
+  google_scholar_id = {IjCSPb-OGe4C}
+}
+
+@article{oh2023qcsfl,
+  keywords          = {intl_journal},
+  topics            = {Distributed Learning},
+  title             = {Communication-Efficient Federated Learning via Quantized Compressed Sensing},
+  author            = {Oh, Yongjeong and Lee, Namyoon and Jeon, Yo-Seb and Poor, H. Vincent},
+  journal           = {IEEE Transactions on Wireless Communications},
+  volume            = {22},
+  number            = {2},
+  pages             = {1087--1100},
+  month             = {Feb.},
+  year              = {2023},
+  abbr              = {TWC},
+  selected          = {true},
+  google_scholar_id = {qjMakFHDy7sC}
+}
+
+@article{oh2021ccnnloc,
+  keywords    = {intl_journal},
+  title       = {{C-CNNLoc}: Constrained {CNN} for Robust Indoor Localization with Building Boundary},
+  author      = {Oh, Yongjeong and Noh, Hea-Min and Shin, Wonjae},
+  journal     = {Electronics Letters},
+  volume      = {57},
+  number      = {10},
+  pages       = {422--425},
+  month       = {May},
+  year        = {2021},
+  abbr        = {EL}
+}
+
+% =============================================================================
+% International Conference Papers
+% =============================================================================
+
+@inproceedings{park2026iccw,
+  keywords    = {intl_conf},
+  title       = {Importance-Driven Resource Management for {MIMO-OFDM} Semantic Communications},
+  author      = {Park, Joohyuk and Oh, Yongjeong and Park, Jihun and Jeon, Yo-Seb},
+  booktitle   = {Proc. IEEE International Conference on Communications Workshops (ICC Wkshps)},
+  address     = {Glasgow, UK},
+  month       = {May},
+  year        = {2026},
+  abbr        = {ICC Wkshps}
+}
+
+@inproceedings{ha2026rblora,
+  keywords    = {intl_conf},
+  title       = {{RB-LoRA}: Rank-Balanced Aggregation for Low-Rank Adaptation with Federated Fine-Tuning},
+  author      = {Ha, Sihyeon and Oh, Yongjeong and Jeon, Yo-Seb},
+  booktitle   = {Proc. Findings of the Association for Computational Linguistics: EACL},
+  address     = {Rabat, Morocco},
+  month       = {Mar.},
+  year        = {2026},
+  abbr        = {EACL}
+}
+
+@inproceedings{shin2025escmvq,
+  keywords    = {intl_conf},
+  title       = {End-to-End Semantic Communication via Multi-Codebook Vector Quantization},
+  author      = {Shin, Junyong and Oh, Yongjeong and Park, Jinsung and Park, Joohyuk and Jeon, Yo-Seb},
+  booktitle   = {Proc. IEEE Global Communications Conference Workshops (GC Wkshps)},
+  address     = {Taipei, Taiwan},
+  month       = {Dec.},
+  year        = {2025},
+  abbr        = {GC Wkshps}
+}
+
+@inproceedings{park2025icc,
+  keywords    = {intl_conf},
+  title       = {Vision Transformer-Aided Importance-Aware Quantization for Digital Semantic Communications},
+  author      = {Park, Joohyuk and Oh, Yongjeong and Kim, Yongjune and Jeon, Yo-Seb},
+  booktitle   = {Proc. IEEE International Conference on Communications (ICC)},
+  address     = {Montreal, Canada},
+  month       = {Jun.},
+  year        = {2025},
+  abbr        = {ICC}
+}
+
+@inproceedings{oh2024globecom,
+  keywords    = {intl_conf},
+  title       = {Joint Activity Detection and Channel Estimation in Grant-Free {NOMA} via Deep Learning-Assisted Parallel Interference Cancellation},
+  author      = {Oh, Yongjeong and Jo, Jaehong and Shim, Byonghyo and Jeon, Yo-Seb},
+  booktitle   = {Proc. IEEE Global Communications Conference (GLOBECOM)},
+  address     = {Cape Town, South Africa},
+  month       = {Dec.},
+  year        = {2024},
+  abbr        = {GLOBECOM}
+}
+
+@inproceedings{park2024globecom,
+  keywords    = {intl_conf},
+  title       = {Joint Source-Channel Coding for Robust Digital Semantic Communications},
+  author      = {Park, Joohyuk and Oh, Yongjeong and Kim, Seonjung and Jeon, Yo-Seb},
+  booktitle   = {Proc. IEEE Global Communications Conference (GLOBECOM)},
+  address     = {Cape Town, South Africa},
+  month       = {Dec.},
+  year        = {2024},
+  abbr        = {GLOBECOM}
+}
+
+@inproceedings{park2024icc,
+  keywords    = {intl_conf},
+  title       = {Robust Beam Alignment Using Prior Information for Low-SNR Millimeter-Wave Communications},
+  author      = {Park, Jihun and Oh, Yongjeong and Yun, Jaewon and Kim, Seonjung and Jeon, Yo-Seb},
+  booktitle   = {Proc. IEEE International Conference on Communications (ICC)},
+  address     = {Denver, CO, USA},
+  month       = {Jun.},
+  year        = {2024},
+  abbr        = {ICC}
+}
+
+@inproceedings{oh2022vqcsworkshop,
+  keywords    = {intl_conf},
+  title       = {Vector Quantized Compressed Sensing for Communication-Efficient Federated Learning},
+  author      = {Oh, Yongjeong and Jeon, Yo-Seb and Chen, Mingzhe and Saad, Walid},
+  booktitle   = {Proc. IEEE Global Communications Conference Workshops (GC Wkshps)},
+  address     = {Rio de Janeiro, Brazil},
+  pages       = {365--370},
+  month       = {Dec.},
+  year        = {2022},
+  abbr        = {GC Wkshps}
+}
+
+@inproceedings{oh2021qcsworkshop,
+  keywords    = {intl_conf},
+  title       = {Quantized Compressed Sensing for Communication-Efficient Federated Learning},
+  author      = {Oh, Yongjeong and Lee, Namyoon and Jeon, Yo-Seb},
+  booktitle   = {Proc. IEEE Global Communications Conference Workshops (GC Wkshps)},
+  address     = {Madrid, Spain},
+  pages       = {1--6},
+  month       = {Dec.},
+  year        = {2021},
+  abbr        = {GC Wkshps}
+}
+
+% =============================================================================
+% Domestic Journal Paper
+% =============================================================================
+
+@article{noh2021kics,
+  keywords    = {dom_journal},
+  title       = {A Survey of Deep Learning-Assisted Indoor Localization with {Wi-Fi} Fingerprinting: Current Status and Research Challenges},
+  author      = {Noh, Hea-Min and Oh, Yongjeong and Lee, Namyoon and Shin, Wonjae},
+  journal     = {The Journal of Korean Institute of Communications and Information Sciences},
+  volume      = {46},
+  number      = {5},
+  pages       = {848--862},
+  month       = {May},
+  year        = {2021},
+  abbr        = {JKICS},
+  paper       = {https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10557254}
+}
+
+% =============================================================================
+% Domestic Conference Papers
+% =============================================================================
+
+@inproceedings{kim2026kics,
+  keywords    = {dom_conf},
+  title       = {Unequal Error Protection for Importance-Aware Semantic Communication},
+  author      = {Kim, Seonjung and Oh, Yongjeong and Jeon, Yo-Seb},
+  booktitle   = {Proc. Korea Institute of Communications and Information Sciences (KICS) Winter Academic Conference},
+  month       = {Feb.},
+  year        = {2026},
+  abbr        = {KICS}
+}
+
+@inproceedings{oh2025jcci,
+  keywords    = {dom_conf},
+  title       = {Blind Training for Power and Modulation Level Optimization in Digital Semantic Communication},
+  author      = {Oh, Yongjeong and Jeon, Yo-Seb},
+  booktitle   = {Proc. Joint Conference on Communications and Information (JCCI)},
+  month       = {Apr.},
+  year        = {2025},
+  abbr        = {JCCI}
+}
+
+@inproceedings{oh2025kics,
+  keywords    = {dom_conf},
+  title       = {Blind Training for Channel-Adaptive Digital Deep Joint Source-Channel Coding},
+  author      = {Oh, Yongjeong and Jeon, Yo-Seb},
+  booktitle   = {Proc. Korea Institute of Communications and Information Sciences (KICS) Winter Academic Conference},
+  month       = {Feb.},
+  year        = {2025},
+  abbr        = {KICS}
+}
+
+@inproceedings{oh2024jcci,
+  keywords    = {dom_conf},
+  title       = {Deep Learning-Based Parallel Interference Cancellation Technique for Grant-Free {NOMA}},
+  author      = {Oh, Yongjeong and Jeon, Yo-Seb},
+  booktitle   = {Proc. Joint Conference on Communications and Information (JCCI)},
+  month       = {Apr.},
+  year        = {2024},
+  abbr        = {JCCI}
+}
+
+@inproceedings{yun2023kics,
+  keywords    = {dom_conf},
+  title       = {Sparsification-Based Compression Technique for Communication-Efficient Federated Learning},
+  author      = {Yun, Jaewon and Oh, Yongjeong and Jeon, Yo-Seb},
+  booktitle   = {Proc. Korea Institute of Communications and Information Sciences (KICS) Summer Academic Conference},
+  month       = {Jun.},
+  year        = {2023},
+  abbr        = {KICS},
+  award       = {**Best Paper Award**, KICS Summer Conference, 2023.},
+  award_name  = {Award}
+}
+
+@inproceedings{oh2023kics,
+  keywords    = {dom_conf},
+  title       = {Adaptive Dropout Technique for Improving Communication Efficiency of Split Learning},
+  author      = {Oh, Yongjeong and Jeon, Yo-Seb},
+  booktitle   = {Proc. Korea Institute of Communications and Information Sciences (KICS) Summer Academic Conference},
+  month       = {Jun.},
+  year        = {2023},
+  abbr        = {KICS}
+}
+
+@inproceedings{oh2022kics,
+  keywords    = {dom_conf},
+  title       = {Vector Quantized Compressed Sensing for Improving Communication Efficiency of Federated Learning},
+  author      = {Oh, Yongjeong and Jeon, Yo-Seb},
+  booktitle   = {Proc. Korea Institute of Communications and Information Sciences (KICS) Summer Academic Conference},
+  month       = {Jun.},
+  year        = {2022},
+  abbr        = {KICS},
+  award       = {**Best Paper Award**, KICS Summer Conference, 2022.},
+  award_name  = {Award}
+}
+
+@inproceedings{oh2021kicsfall,
+  keywords    = {dom_conf},
+  title       = {Gradient Compression and Reconstruction Techniques for Communication-Efficient Federated Learning},
+  author      = {Oh, Yongjeong and Jeon, Yo-Seb},
+  booktitle   = {Proc. Korea Institute of Communications and Information Sciences (KICS) Fall Academic Conference},
+  month       = {Nov.},
+  year        = {2021},
+  abbr        = {KICS}
+}
+
+@inproceedings{oh2020kics,
+  keywords    = {dom_conf},
+  title       = {{SAE-CCNN}: Deep Neural Network Based Indoor Positioning Technique by Combining Boundary Information of Building},
+  author      = {Oh, Yongjeong and Noh, Hea-Min and Shin, Wonjae},
+  booktitle   = {Proc. Korea Institute of Communications and Information Sciences (KICS) Summer Academic Conference},
+  month       = {Aug.},
+  year        = {2020},
+  abbr        = {KICS},
+  award       = {**Undergraduate Student Best Paper Award**, KICS Summer Conference, 2020.},
+  award_name  = {Award}
+}
+
+% =============================================================================
+% Patent Applications
+% =============================================================================
+
+@misc{patent2025pct,
+  keywords    = {patent},
+  title       = {Channel-Adaptive Digital Semantic Communication},
+  author      = {Jeon, Yo-Seb and Oh, Yongjeong and Park, Joohyuk},
+  note        = {Application: PCT/KR2025/016131, Oct. 14, 2025},
+  abbr        = {Patent}
+}
+
+@misc{patent2024kr,
+  keywords    = {patent},
+  title       = {Channel-Adaptive Digital Semantic Communication},
+  author      = {Jeon, Yo-Seb and Oh, Yongjeong and Park, Joohyuk},
+  note        = {Application: KR 10-2024-0194095, Dec. 23, 2024},
+  abbr        = {Patent}
 }

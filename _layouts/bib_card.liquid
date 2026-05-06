@@ -1,0 +1,96 @@
+---
+---
+{%- comment -%}
+  Compact card template for the Selected Publications grid on the about
+  page. Each card shows venue + date, title, and a short author list.
+{%- endcomment -%}
+{% assign venue_color = site.data.venues[entry.abbr].color | default: '#00369f' %}
+{% assign card_link = entry.title | url_encode | prepend: 'https://scholar.google.com/scholar?q=' %}
+{% assign month_display = '' %}
+{% if entry.month %}
+  {% assign m = entry.month | downcase | remove: '.' %}
+  {% case m %}
+    {% when 'jan' or 'january' %}{% assign month_display = 'Jan.' %}
+    {% when 'feb' or 'february' %}{% assign month_display = 'Feb.' %}
+    {% when 'mar' or 'march' %}{% assign month_display = 'Mar.' %}
+    {% when 'apr' or 'april' %}{% assign month_display = 'Apr.' %}
+    {% when 'may' %}{% assign month_display = 'May' %}
+    {% when 'jun' or 'june' %}{% assign month_display = 'Jun.' %}
+    {% when 'jul' or 'july' %}{% assign month_display = 'Jul.' %}
+    {% when 'aug' or 'august' %}{% assign month_display = 'Aug.' %}
+    {% when 'sep' or 'september' %}{% assign month_display = 'Sep.' %}
+    {% when 'oct' or 'october' %}{% assign month_display = 'Oct.' %}
+    {% when 'nov' or 'november' %}{% assign month_display = 'Nov.' %}
+    {% when 'dec' or 'december' %}{% assign month_display = 'Dec.' %}
+    {% else %}{% assign month_display = entry.month %}
+  {% endcase %}
+{% endif %}
+<a class="sel-card" href="{{ card_link }}" target="_blank" rel="noopener noreferrer" style="--venue-color: {{ venue_color }};">
+  <div class="sel-card-top">
+    {% unless entry.keywords contains 'submitted' %}
+      <span class="sel-card-venue">{{ entry.abbr }}</span>
+    {% endunless %}
+    {% if entry.keywords contains 'submitted' %}
+      <span class="sel-card-tag tag-submitted">Submitted</span>
+    {% endif %}
+    <span class="sel-card-date">{% if month_display != '' %}{{ month_display }} {% endif %}{{ entry.year }}</span>
+  </div>
+  <p class="sel-card-title">{{ entry.title }}</p>
+  <p class="sel-card-authors">
+    {%- for author in entry.author_array -%}
+      {%- comment -%}
+        Separator BEFORE this author (skipped on the first one). For 3+
+        authors we use an Oxford comma + "and" before the last; for 2
+        authors we use just " and ".
+      {%- endcomment -%}
+      {%- unless forloop.first -%}
+        {%- if forloop.last -%}
+          {%- if entry.author_array.size > 2 -%}, and {% else %} and {% endif -%}
+        {%- else %}, {% endif -%}
+      {%- endunless -%}
+      {%- comment -%}
+        Build initials from `author.first`, handling both space-separated
+        names ("H. Vincent" → "H. V.") and hyphenated names ("Yo-Seb" → "Y.-S.").
+      {%- endcomment -%}
+      {%- assign initial_str = '' -%}
+      {%- assign first_parts = author.first | split: ' ' -%}
+      {%- for part in first_parts -%}
+        {%- if part contains '-' -%}
+          {%- assign hyphen_parts = part | split: '-' -%}
+          {%- for hp in hyphen_parts -%}
+            {%- assign letter = hp | slice: 0, 1 -%}
+            {%- assign initial_str = initial_str | append: letter | append: '.' -%}
+            {%- unless forloop.last -%}
+              {%- assign initial_str = initial_str | append: '-' -%}
+            {%- endunless -%}
+          {%- endfor -%}
+        {%- else -%}
+          {%- assign letter = part | slice: 0, 1 -%}
+          {%- assign initial_str = initial_str | append: letter | append: '.' -%}
+        {%- endif -%}
+        {%- unless forloop.last -%}
+          {%- assign initial_str = initial_str | append: ' ' -%}
+        {%- endunless -%}
+      {%- endfor -%}
+      {%- assign is_self = false -%}
+      {%- if site.scholar.last_name contains author.last -%}
+        {%- if site.scholar.first_name contains author.first -%}
+          {%- assign is_self = true -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if is_self -%}
+        <em class="sel-card-self">{{ initial_str }} {{ author.last }}</em>
+      {%- else -%}
+        <span class="sel-card-author">{{ initial_str }} {{ author.last }}</span>
+      {%- endif -%}
+    {%- endfor -%}
+  </p>
+  {% if entry.topics %}
+    <div class="sel-card-topics">
+      {% assign topic_list = entry.topics | split: ',' %}
+      {% for topic in topic_list %}
+        <span class="sel-card-topic">{{ topic | strip }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
+</a>

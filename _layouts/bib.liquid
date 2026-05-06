@@ -85,7 +85,7 @@
           {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
         {% endif %}
         {%- if author_is_self -%}
-          <em>
+          <em class="self-author">
             {{- author.first }}
             {{ author_last_html -}}
           </em>
@@ -162,7 +162,23 @@
     {% endif %}
     {% assign entrymonth = '' %}
     {% if entry.month %}
-      {% capture entrymonth %}{{ " " }}{{ entry.month | capitalize }}{% endcapture %}
+      {% assign m = entry.month | downcase | remove: '.' %}
+      {% case m %}
+        {% when 'jan' or 'january' %}{% assign month_display = 'Jan.' %}
+        {% when 'feb' or 'february' %}{% assign month_display = 'Feb.' %}
+        {% when 'mar' or 'march' %}{% assign month_display = 'Mar.' %}
+        {% when 'apr' or 'april' %}{% assign month_display = 'Apr.' %}
+        {% when 'may' %}{% assign month_display = 'May' %}
+        {% when 'jun' or 'june' %}{% assign month_display = 'Jun.' %}
+        {% when 'jul' or 'july' %}{% assign month_display = 'Jul.' %}
+        {% when 'aug' or 'august' %}{% assign month_display = 'Aug.' %}
+        {% when 'sep' or 'september' %}{% assign month_display = 'Sep.' %}
+        {% when 'oct' or 'october' %}{% assign month_display = 'Oct.' %}
+        {% when 'nov' or 'november' %}{% assign month_display = 'Nov.' %}
+        {% when 'dec' or 'december' %}{% assign month_display = 'Dec.' %}
+        {% else %}{% assign month_display = entry.month %}
+      {% endcase %}
+      {% capture entrymonth %}{{ " " }}{{ month_display }}{% endcapture %}
     {% endif %}
     {% assign entryyear = '' %}
     {% if entry.year %}
@@ -180,26 +196,63 @@
     {% endif %}
     {% assign entrytype_text = entrytype | strip_html | strip %}
     {% capture periodical %}{{ entrytype }}{% if entrytype_text != "" and entryyear != "" %}, {% endif %}{{ entrymonth }}{{ entryyear }}{% endcapture %}
-    <div class="periodical">
-      {{ periodical | strip }}
-    </div>
-    <div class="periodical">
-      {{ entry.note | strip }}
-    </div>
+    {% assign periodical_clean = periodical | strip %}
+    {% if periodical_clean != "" %}
+      <div class="periodical">
+        {{ periodical_clean }}
+      </div>
+    {% endif %}
+    {% assign note_clean = entry.note | strip %}
+    {% if note_clean != "" %}
+      <div class="periodical">
+        {{ note_clean }}
+      </div>
+    {% endif %}
 
     <!-- Links/Buttons -->
     <div class="links">
-      {% if entry.award %}
-        <a class="award btn btn-sm z-depth-0" role="button">
-          {%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}
-        </a>
-      {% endif %}
-      {% if entry.abstract %}
-        <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
-      {% endif %}
-      {% if entry.doi %}
-        <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
-      {% endif %}
+      {% unless entry.keywords contains 'dom_conf' or entry.keywords contains 'patent' %}
+        <a class="abstract btn btn-sm z-depth-0" role="button">Abstract</a>
+      {% endunless %}
+      {% unless entry.keywords contains 'dom_conf' or entry.keywords contains 'patent' %}
+        {% if entry.paper %}
+          <a href="{{ entry.paper }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">Paper</a>
+        {% else %}
+          {% assign paper_search = entry.title | url_encode %}
+          <a href="https://scholar.google.com/scholar?q={{ paper_search }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">Paper</a>
+        {% endif %}
+        {% if entry.google_scholar_id %}
+          {% assign citation_count = 0 %}
+          {% assign scholar_id_key = site.scholar_userid | append: ':' | append: entry.google_scholar_id %}
+          {% if site.data.citations.papers[scholar_id_key] %}
+            {% assign citation_count = site.data.citations.papers[scholar_id_key].citations %}
+          {% elsif site.data.citations.papers[entry.google_scholar_id] %}
+            {% assign citation_count = site.data.citations.papers[entry.google_scholar_id].citations %}
+          {% else %}
+            {% for paper in site.data.citations.papers %}
+              {% assign paper_key = paper[0] %}
+              {% if paper_key contains entry.google_scholar_id %}
+                {% assign citation_count = paper[1].citations %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          <span class="cite-count"><i class="ai ai-google-scholar"></i>{{ citation_count }} citations</span>
+        {% endif %}
+        {% unless entry.keywords contains 'submitted' %}
+          {% assign if_text = '' %}
+          {% case entry.abbr %}
+            {% when 'TWC' %}{% assign if_text = 'IF 10.7, JCR Top 3.7%' %}
+            {% when 'TCOM' %}{% assign if_text = 'IF 8.3, JCR Top 7.2%' %}
+            {% when 'IoT-J' %}{% assign if_text = 'IF 8.9, JCR Top 4.1%' %}
+            {% when 'TNNLS' %}{% assign if_text = 'IF 8.9, JCR Top 4.2%' %}
+            {% when 'TCCN' %}{% assign if_text = 'IF 7.0, JCR Top 13.7%' %}
+          {% endcase %}
+          {% if if_text != '' %}
+            <span class="impact-factor"><i class="fa-solid fa-chart-line"></i>{{ if_text }}</span>
+          {% endif %}
+        {% endunless %}
+      {% endunless %}
       {% if entry.arxiv %}
         <a href="http://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
       {% endif %}
@@ -257,6 +310,9 @@
       {% endif %}
       {% if entry.website %}
         <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
+      {% endif %}
+      {% if entry.award %}
+        <a class="award btn btn-sm z-depth-0" role="button"><i class="fa-solid fa-trophy"></i>{%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}</a>
       {% endif %}
     </div>
     {% if site.enable_publication_badges %}
@@ -369,18 +425,81 @@
       </div>
     {% endif %}
 
-    {% if entry.abstract %}
+    {% unless entry.keywords contains 'dom_conf' or entry.keywords contains 'patent' %}
       <!-- Hidden abstract block -->
       <div class="abstract hidden">
-        <p>{{ entry.abstract }}</p>
+        {% if entry.abstract %}
+          <p>{{ entry.abstract }}</p>
+        {% else %}
+          <p><em>Abstract is not yet provided.</em></p>
+        {% endif %}
       </div>
-    {% endif %}
+    {% endunless %}
 
     {% if entry.bibtex_show %}
       <!-- Hidden bibtex block -->
       <div class="bibtex hidden">
+        {% capture rendered_bibtex %}{{ entry.bibtex | hideCustomBibtex }}{% endcapture %}
+        {% assign rendered_bibtex = rendered_bibtex
+          | replace: 'month = jan,', 'month = {Jan.},'
+          | replace: 'month = feb,', 'month = {Feb.},'
+          | replace: 'month = mar,', 'month = {Mar.},'
+          | replace: 'month = apr,', 'month = {Apr.},'
+          | replace: 'month = may,', 'month = {May},'
+          | replace: 'month = jun,', 'month = {Jun.},'
+          | replace: 'month = jul,', 'month = {Jul.},'
+          | replace: 'month = aug,', 'month = {Aug.},'
+          | replace: 'month = sep,', 'month = {Sep.},'
+          | replace: 'month = oct,', 'month = {Oct.},'
+          | replace: 'month = nov,', 'month = {Nov.},'
+          | replace: 'month = dec,', 'month = {Dec.},'
+          | replace: 'IEEE Transactions on Wireless Communications', 'IEEE Trans. Wireless Commun.'
+          | replace: 'IEEE Transactions on Communications', 'IEEE Trans. Commun.'
+          | replace: 'IEEE Communications Letters', 'IEEE Commun. Lett.'
+          | replace: 'IEEE Internet of Things Journal', 'IEEE Internet Things J.'
+          | replace: 'IEEE Transactions on Neural Networks and Learning Systems', 'IEEE Trans. Neural Netw. Learn. Syst.'
+          | replace: 'IEEE Transactions on Cognitive Communications and Networking', 'IEEE Trans. Cogn. Commun. Netw.'
+          | replace: 'Electronics Letters', 'Electron. Lett.'
+          | replace: 'The Journal of Korean Institute of Communications and Information Sciences', 'J. Korean Inst. Commun. Inf. Sci.'
+          | replace: 'title = {Towards Optimal Semantic Communications: Reconsidering the Role of Semantic Feature Channels}', 'title = {{Towards optimal semantic communications: Reconsidering the role of semantic feature channels}}'
+          | replace: 'title = {Channel Coding for Unequal Error Protection in Digital Semantic Communication}', 'title = {{Channel coding for unequal error protection in digital semantic communication}}'
+          | replace: 'title = {Rate-Adaptive Semantic Communication via Multi-Stage Vector Quantization}', 'title = {{Rate-adaptive semantic communication via multi-stage vector quantization}}'
+          | replace: 'title = {Prior-Aware Robust Beam Alignment for Low-SNR Millimeter-Wave Communications}', 'title = {{Prior-aware robust beam alignment for low-SNR millimeter-wave communications}}'
+          | replace: 'title = {Importance-Aware Semantic Communication in MIMO-OFDM Systems Using Vision Transformer}', 'title = {{Importance-aware semantic communication in MIMO-OFDM systems using vision transformer}}'
+          | replace: 'title = {ESC-MVQ: End-to-End Semantic Communication with Multi-Codebook Vector Quantization}', 'title = {{ESC-MVQ: End-to-end semantic communication with multi-codebook vector quantization}}'
+          | replace: 'title = {Blind Training for Channel-Adaptive Digital Semantic Communications}', 'title = {{Blind training for channel-adaptive digital semantic communications}}'
+          | replace: 'title = {Deep Learning-Based Modulation and Power Control: A BER Perspective}', 'title = {{Deep learning-based modulation and power control: A BER perspective}}'
+          | replace: 'title = {End-to-End Training and Adaptive Transmission for OFDM-Based Semantic Communication}', 'title = {{End-to-end training and adaptive transmission for OFDM-based semantic communication}}'
+          | replace: 'title = {Vision Transformer-Based Semantic Communications with Importance-Aware Quantization}', 'title = {{Vision transformer-based semantic communications with importance-aware quantization}}'
+          | replace: 'title = {Deep Learning-Assisted Parallel Interference Cancellation for Grant-Free NOMA in Machine-Type Communication}', 'title = {{Deep learning-assisted parallel interference cancellation for grant-free NOMA in machine-type communication}}'
+          | replace: 'title = {Communication-Efficient Split Learning via Adaptive Feature-Wise Compression}', 'title = {{Communication-efficient split learning via adaptive feature-wise compression}}'
+          | replace: 'title = {Joint Source-Channel Coding for Channel-Adaptive Digital Semantic Communications}', 'title = {{Joint source-channel coding for channel-adaptive digital semantic communications}}'
+          | replace: 'title = {Communication-Efficient Federated Learning over Capacity-Limited Wireless Networks}', 'title = {{Communication-efficient federated learning over capacity-limited wireless networks}}'
+          | replace: 'title = {{SplitMAC}: Wireless Split Learning over Multiple Access Channels}', 'title = {{SplitMAC: Wireless split learning over multiple access channels}}'
+          | replace: 'title = {{FedVQCS}: Federated Learning via Vector Quantized Compressed Sensing}', 'title = {{FedVQCS: Federated learning via vector quantized compressed sensing}}'
+          | replace: 'title = {Communication-Efficient Federated Learning via Quantized Compressed Sensing}', 'title = {{Communication-efficient federated learning via quantized compressed sensing}}'
+          | replace: 'title = {{C-CNNLoc}: Constrained {CNN} for Robust Indoor Localization with Building Boundary}', 'title = {{C-CNNLoc: Constrained CNN for robust indoor localization with building boundary}}'
+          | replace: 'title = {{RB-LoRA}: Rank-Balanced Aggregation for Low-Rank Adaptation with Federated Fine-Tuning}', 'title = {{RB-LoRA: Rank-balanced aggregation for low-rank adaptation with federated fine-tuning}}'
+          | replace: 'title = {End-to-End Semantic Communication via Multi-Codebook Vector Quantization}', 'title = {{End-to-end semantic communication via multi-codebook vector quantization}}'
+          | replace: 'title = {Vision Transformer-Aided Importance-Aware Quantization for Digital Semantic Communications}', 'title = {{Vision transformer-aided importance-aware quantization for digital semantic communications}}'
+          | replace: 'title = {Joint Activity Detection and Channel Estimation in Grant-Free {NOMA} via Deep Learning-Assisted Parallel Interference Cancellation}', 'title = {{Joint activity detection and channel estimation in grant-free NOMA via deep learning-assisted parallel interference cancellation}}'
+          | replace: 'title = {Joint Source-Channel Coding for Robust Digital Semantic Communications}', 'title = {{Joint source-channel coding for robust digital semantic communications}}'
+          | replace: 'title = {Robust Beam Alignment Using Prior Information for Low-SNR Millimeter-Wave Communications}', 'title = {{Robust beam alignment using prior information for low-SNR millimeter-wave communications}}'
+          | replace: 'title = {Vector Quantized Compressed Sensing for Communication-Efficient Federated Learning}', 'title = {{Vector quantized compressed sensing for communication-efficient federated learning}}'
+          | replace: 'title = {Quantized Compressed Sensing for Communication-Efficient Federated Learning}', 'title = {{Quantized compressed sensing for communication-efficient federated learning}}'
+          | replace: 'title = {A Survey of Deep Learning-Assisted Indoor Localization with {Wi-Fi} Fingerprinting: Current Status and Research Challenges}', 'title = {{A survey of deep learning-assisted indoor localization with Wi-Fi fingerprinting: Current status and research challenges}}'
+          | replace: 'title = {Blind Training for Power and Modulation Level Optimization in Digital Semantic Communication}', 'title = {{Blind training for power and modulation level optimization in digital semantic communication}}'
+          | replace: 'title = {Blind Training for Channel-Adaptive Digital Deep Joint Source-Channel Coding}', 'title = {{Blind training for channel-adaptive digital deep joint source-channel coding}}'
+          | replace: 'title = {Deep Learning-Based Parallel Interference Cancellation Technique for Grant-Free {NOMA}}', 'title = {{Deep learning-based parallel interference cancellation technique for grant-free NOMA}}'
+          | replace: 'title = {Sparsification-Based Compression Technique for Communication-Efficient Federated Learning}', 'title = {{Sparsification-based compression technique for communication-efficient federated learning}}'
+          | replace: 'title = {Adaptive Dropout Technique for Improving Communication Efficiency of Split Learning}', 'title = {{Adaptive dropout technique for improving communication efficiency of split learning}}'
+          | replace: 'title = {Vector Quantized Compressed Sensing for Improving Communication Efficiency of Federated Learning}', 'title = {{Vector quantized compressed sensing for improving communication efficiency of federated learning}}'
+          | replace: 'title = {Gradient Compression and Reconstruction Techniques for Communication-Efficient Federated Learning}', 'title = {{Gradient compression and reconstruction techniques for communication-efficient federated learning}}'
+          | replace: 'title = {{SAE-CCNN}: Deep Neural Network Based Indoor Positioning Technique by Combining Boundary Information of Building}', 'title = {{SAE-CCNN: Deep neural network based indoor positioning technique by combining boundary information of building}}'
+          | replace: 'title = {Channel-Adaptive Digital Semantic Communication}', 'title = {{Channel-adaptive digital semantic communication}}'
+        %}
         {% highlight bibtex %}
-        {{- entry.bibtex | hideCustomBibtex -}}
+        {{- rendered_bibtex -}}
         {% endhighlight %}
       </div>
     {% endif %}
