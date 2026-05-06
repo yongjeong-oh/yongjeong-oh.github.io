@@ -5,56 +5,62 @@
             var list = document.querySelector(listSel);
             if (!btn || !list) return;
             var label = btn.querySelector(labelSel);
-            btn.addEventListener("click", function () {
-              var expanded = btn.classList.toggle("expanded");
-              list.classList.toggle("expanded", expanded);
-              btn.setAttribute("aria-pressed", expanded ? "true" : "false");
-              if (label) label.textContent = expanded ? "Expanded" : "Collapsed";
+            btn.addEventListener('click', function () {
+              var expanded = btn.classList.toggle('expanded');
+              list.classList.toggle('expanded', expanded);
+              btn.setAttribute('aria-pressed', expanded ? 'true' : 'false');
+              if (label) label.textContent = expanded ? 'Expanded' : 'Collapsed';
             });
           }
-          document.addEventListener("DOMContentLoaded", function () {
-            bindToggle(".about-news .news-toggle", ".about-news .news-list", ".news-toggle-label");
+          document.addEventListener('DOMContentLoaded', function () {
+            bindToggle('.about-news .news-toggle', '.about-news .news-list', '.news-toggle-label');
 
             // Award rows: click to expand the detail block (image / PDF link).
-            document.querySelectorAll(".about-awards .award-item").forEach(function (li) {
-              var row = li.querySelector(".award-row");
+            document.querySelectorAll('.about-awards .award-item').forEach(function (li) {
+              var row = li.querySelector('.award-row');
               if (!row) return;
-              row.addEventListener("click", function () {
-                li.classList.toggle("expanded");
+              row.addEventListener('click', function () {
+                li.classList.toggle('expanded');
               });
             });
 
             // Copy-to-clipboard buttons next to non-link profile fields
             // (e.g. email). Falls back to a hidden textarea when the
             // Clipboard API is unavailable (older browsers, insecure origins).
-            document.querySelectorAll(".profile-link-copy").forEach(function (btn) {
-              btn.addEventListener("click", function (e) {
+            document.querySelectorAll('.profile-link-copy').forEach(function (btn) {
+              btn.addEventListener('click', function (e) {
                 e.preventDefault();
-                var text = btn.getAttribute("data-copy");
+                var text = btn.getAttribute('data-copy');
                 if (!text) return;
 
                 function flash() {
-                  var icon = btn.querySelector("i");
-                  var prevCls = icon ? icon.className : "";
-                  btn.classList.add("copied");
-                  if (icon) icon.className = "fa-solid fa-check";
+                  var icon = btn.querySelector('i');
+                  var prevCls = icon ? icon.className : '';
+                  btn.classList.add('copied');
+                  if (icon) icon.className = 'fa-solid fa-check';
                   setTimeout(function () {
-                    btn.classList.remove("copied");
+                    btn.classList.remove('copied');
                     if (icon) icon.className = prevCls;
                   }, 1500);
                 }
 
                 if (navigator.clipboard && navigator.clipboard.writeText) {
-                  navigator.clipboard.writeText(text).then(flash).catch(function () {});
+                  navigator.clipboard
+                    .writeText(text)
+                    .then(flash)
+                    .catch(function () {});
                 } else {
-                  var ta = document.createElement("textarea");
+                  var ta = document.createElement('textarea');
                   ta.value = text;
-                  ta.setAttribute("readonly", "");
-                  ta.style.position = "absolute";
-                  ta.style.left = "-9999px";
+                  ta.setAttribute('readonly', '');
+                  ta.style.position = 'absolute';
+                  ta.style.left = '-9999px';
                   document.body.appendChild(ta);
                   ta.select();
-                  try { document.execCommand("copy"); flash(); } catch (err) {}
+                  try {
+                    document.execCommand('copy');
+                    flash();
+                  } catch (err) {}
                   document.body.removeChild(ta);
                 }
               });
