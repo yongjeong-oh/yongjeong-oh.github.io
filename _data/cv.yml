@@ -1,0 +1,152 @@
+cv:
+  name: Yongjeong Oh
+  label: Research Fellow
+  email: yongjeongoh@postech.ac.kr
+  location: Singapore
+  image: "prof_pic.jpg"
+  summary: >
+    Research Fellow at Singapore University of Technology and Design (SUTD)
+    working on semantic communications, AI-native air interfaces, and
+    communication-efficient distributed learning.
+
+  social_networks:
+    - network: Google Scholar
+      username: ZjFqe_cAAAAJ
+
+  address:
+    street: 8 Somapah Road
+    city: Singapore
+    region: Singapore
+    postalCode: "487372"
+    countryCode: SG
+
+  sections:
+    Education:
+      - institution: Pohang University of Science and Technology (POSTECH)
+        location: Pohang, South Korea
+        url: https://postech.ac.kr/eng/
+        area: Electrical Engineering
+        studyType: Ph.D.
+        start_date: 2023-02
+        end_date: 2026-02
+        highlights:
+          - "Advisor: Prof. Yo-Seb Jeon"
+          - 'Thesis: "Towards Optimal Semantic Communications: Reconsidering the Role of Semantic Feature Channels"'
+
+      - institution: Pohang University of Science and Technology (POSTECH)
+        location: Pohang, South Korea
+        url: https://postech.ac.kr/eng/
+        area: Electrical Engineering
+        studyType: M.S.
+        start_date: 2021-02
+        end_date: 2023-02
+        highlights:
+          - "Advisor: Prof. Yo-Seb Jeon"
+          - 'Thesis: "Communication-Efficient Federated Learning via Quantized Compressed Sensing"'
+
+      - institution: Pusan National University (PNU)
+        location: Busan, South Korea
+        url: https://www.pusan.ac.kr/eng/Main.do
+        area: Electronics Engineering
+        studyType: B.S. (Summa Cum Laude)
+        start_date: 2015-03
+        end_date: 2021-02
+
+    Experience:
+      - company: Singapore University of Technology and Design
+        position: Research Fellow
+        location: Singapore
+        url: https://www.sutd.edu.sg/
+        start_date: 2026-04
+        end_date: Present
+        highlights:
+          - "Research Advisor: Prof. Jihong Park"
+
+      - company: Deakin University
+        position: Visiting Researcher
+        location: Geelong, Australia
+        url: https://www.deakin.edu.au/
+        start_date: 2024-01
+        end_date: 2024-02
+        highlights:
+          - "Host: Prof. Jihong Park"
+
+      - company: Pusan National University
+        position: Undergraduate Research Intern
+        location: Busan, South Korea
+        start_date: 2020-05
+        end_date: 2021-02
+        highlights:
+          - "Advisor: Prof. Wonjae Shin"
+
+    Awards:
+      - title: PIURI Postdoctoral Fellowship
+        date: 2026
+        awarder: POSTECH
+
+      - title: Excellence Award, 5th POSTECH-EE Excellent Research Performance Contest
+        date: 2026
+        awarder: POSTECH Department of Electrical Engineering
+
+      - title: Best Doctoral Dissertation Award
+        date: 2026
+        awarder: POSTECH Department of Electrical Engineering
+
+      - title: Bronze Prize, SAMSUNG Humantech Paper Awards
+        date: 2026
+        awarder: Samsung Electronics
+        summary: KRW 5,000,000
+
+      - title: POSTECHIAN Fellowship
+        date: 2025
+        awarder: POSTECH
+        summary: KRW 6,000,000
+
+      - title: Research Subsidies for Ph.D. Candidates
+        date: 2024
+        awarder: National Research Foundation of Korea
+        summary: KRW 25,000,000
+
+      - title: Best Paper Award, KICS Summer Conference
+        date: 2023
+        awarder: Korea Institute of Communications and Information Sciences
+
+      - title: Best Master's Thesis Award
+        date: 2023
+        awarder: POSTECH Department of Electrical Engineering
+
+      - title: Excellence Award, 2nd POSTECH-EE Excellent Research Performance Contest
+        date: 2023
+        awarder: POSTECH Department of Electrical Engineering
+
+      - title: Best Paper Award, KICS Summer Conference
+        date: 2022
+        awarder: Korea Institute of Communications and Information Sciences
+
+      - title: Undergraduate Student Best Paper Award, KICS Summer Conference
+        date: 2020
+        awarder: Korea Institute of Communications and Information Sciences
+
+    Professional Services:
+      - name: TPC Member
+        keywords: "IEEE VTC 2026-Spring, IEEE ICC 2026"
+
+      - name: Journal Reviewer
+        keywords: >
+          IEEE Trans. Wireless Communications,
+          IEEE Trans. Communications,
+          IEEE Trans. Neural Networks and Learning Systems,
+          IEEE Trans. Vehicular Technology,
+          IEEE Internet of Things Magazine,
+          IEEE Trans. Machine Learning in Communications and Networking,
+          IEEE/ACM Trans. Networking,
+          IEEE Wireless Communications Letters,
+          Journal of Communications and Networks
+
+      - name: Conference Reviewer
+        keywords: "IEEE GLOBECOM"
+
+    Interests:
+      - name: Research
+        icon: fa-solid fa-tag
+        keywords: "Wireless Communications, Semantic Communications, AI-Native Air Interface, Federated Learning, Distributed Learning, Communication-Efficient Deep Learning"

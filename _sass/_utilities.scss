@@ -1,0 +1,1747 @@
+/*******************************************************************************
+ * Utility styles: Code, forms, animations, modals, etc.
+ ******************************************************************************/
+
+@use "variables" as v;
+
+// Code and syntax highlighting
+
+figure.highlight {
+  margin: 0 0 1rem;
+
+  // Responsive code block container
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  pre {
+    // Ensure code blocks can scroll horizontally
+    white-space: pre;
+    word-wrap: normal;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+pre {
+  color: var(--global-theme-color);
+  background-color: var(--global-code-bg-color);
+  border-radius: 6px;
+  padding: 6px 12px;
+
+  // Responsive behavior for code blocks
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+  word-wrap: normal;
+
+  pre,
+  code {
+    background-color: transparent;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding: 0;
+    white-space: inherit;
+  }
+}
+
+code {
+  color: var(--global-theme-color);
+  background-color: var(--global-code-bg-color);
+  border-radius: 3px;
+  padding: 3px 3px;
+
+  // Inline code should wrap
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+// Progress bars
+
+progress {
+  /* Positioning */
+  position: fixed;
+  left: 0;
+  top: 56px;
+  z-index: 10;
+
+  /* Dimensions */
+  width: 100%;
+  height: 1px;
+
+  /* Reset the appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Get rid of the default border in Firefox/Opera. */
+  border: none;
+
+  /* Progress bar container for Firefox/IE10  */
+  background-color: transparent;
+
+  /* Progress bar value for IE10  */
+  color: var(--global-theme-color);
+}
+
+progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--global-theme-color);
+}
+
+progress::-moz-progress-bar {
+  background-color: var(--global-theme-color);
+}
+
+.progress-container {
+  width: 100%;
+  background-color: transparent;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  height: 5px;
+  display: block;
+}
+
+.progress-bar {
+  background-color: var(--global-theme-color);
+  width: 0%;
+  display: block;
+  height: inherit;
+}
+
+// Themes transition
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
+}
+
+// Copy button
+
+.code-display-wrapper {
+  position: relative;
+
+  .copy {
+    background: var(--global-card-bg-color);
+    border-color: var(--global-bg-color);
+    border-radius: 0.3rem;
+    border-style: none;
+    color: var(--global-text-color);
+    font-size: medium;
+    opacity: 0;
+    position: absolute;
+    right: 0.2rem;
+    top: 0.2rem;
+  }
+
+  &:active .copy,
+  &:focus .copy,
+  &:hover .copy {
+    color: var(--global-hover-color);
+    opacity: 1;
+  }
+}
+
+// Dropdown button group
+
+.btn-group.dropdown {
+  .btn {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+  .btn-secondary.dropdown-toggle {
+    border: 1px solid var(--global-divider-color);
+
+    .page-size {
+      color: inherit;
+    }
+
+    &:not(.active) {
+      background-color: var(--global-bg-color) !important;
+      color: var(--global-text-color);
+    }
+
+    &:hover {
+      background-color: var(--global-hover-color) !important;
+      color: var(--global-hover-text-color) !important;
+    }
+  }
+}
+
+// Table of Contents
+
+nav[data-toggle="toc"] {
+  top: 5rem;
+
+  .nav .nav > li > a {
+    font-size: 0.75rem;
+  }
+
+  .nav > li > a {
+    color: var(--global-text-color);
+    font-size: 0.75rem;
+
+    &:hover {
+      color: var(--global-hover-color);
+      border-left-color: var(--global-hover-color);
+    }
+  }
+
+  .nav-link.active {
+    color: var(--global-theme-color);
+    border-left-color: var(--global-theme-color);
+    font-size: 0.75rem;
+
+    &:hover {
+      color: var(--global-hover-color);
+      border-left-color: var(--global-hover-color);
+    }
+  }
+}
+
+/* small screens */
+@media (max-width: 576px) {
+  /* override stickyness so that the navigation does not follow scrolling */
+  nav[data-toggle="toc"] {
+    visibility: hidden;
+    height: 0;
+    top: 0;
+  }
+
+  /* Responsive code blocks for mobile */
+  pre {
+    font-size: 0.875rem;
+    padding: 8px 10px;
+    margin: 0.5rem 0;
+  }
+
+  figure.highlight {
+    margin: 0.5rem 0;
+
+    pre {
+      font-size: 0.875rem;
+      padding: 8px 10px;
+    }
+  }
+
+  code {
+    font-size: 0.875rem;
+    padding: 2px 4px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 400px) {
+  pre {
+    font-size: 0.8rem;
+    padding: 6px 8px;
+  }
+
+  figure.highlight {
+    pre {
+      font-size: 0.8rem;
+      padding: 6px 8px;
+    }
+  }
+
+  code {
+    font-size: 0.8rem;
+    padding: 1px 3px;
+  }
+}
+
+/* Medium screens - optimize for tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+  pre {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  figure.highlight {
+    pre {
+      font-size: 0.9rem;
+      padding: 8px 12px;
+    }
+  }
+}
+
+// Newsletter form
+
+.newsletter-form-container {
+  margin-bottom: 20px;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.newsletter-form-input,
+.bibsearch-form-input {
+  color: var(--global-newsletter-text-color);
+  background: var(--global-newsletter-bg-color);
+  border: 1px solid var(--global-newsletter-text-color);
+  outline: none;
+  margin: 0px 10px 0px 0px;
+  width: 100%;
+  max-width: 350px;
+  min-width: 100px;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+
+.newsletter-form-input:focus {
+  border-color: var(--global-theme-color) !important;
+}
+
+.newsletter-form-button {
+  background: var(--global-theme-color);
+  color: var(--global-bg-color);
+  display: flex;
+  width: min-content;
+  max-width: 200px;
+  white-space: nowrap;
+  height: 38px;
+  align-items: center;
+  flex-direction: row;
+  padding: 9px 17px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+  border-radius: 6px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.newsletter-loading-button {
+  background: var(--global-theme-color);
+  color: var(--global-bg-color);
+  display: none;
+  width: min-content;
+  max-width: 300px;
+  white-space: nowrap;
+  height: 38px;
+  align-items: center;
+  flex-direction: row;
+  padding: 9px 17px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+  border-radius: 6px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.newsletter-success {
+  color: var(--global-text-color);
+  display: none;
+  align-items: center;
+  width: 100%;
+}
+
+.newsletter-error {
+  color: var(--global-theme-color);
+  display: none;
+  align-items: center;
+  width: 100%;
+}
+
+.newsletter-back-button {
+  color: var(--global-theme-color);
+  margin: 10px auto;
+  text-align: center;
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 575px) {
+  .newsletter-form-input,
+  .newsletter-form-button,
+  .newsletter-loading-button,
+  .newsletter-success,
+  .newsletter-error {
+    font-size: 16px !important;
+  }
+  .newsletter-form-container {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}
+
+// Popovers
+
+.popover {
+  background-color: var(--global-bg-color);
+  border-color: var(--global-divider-color);
+
+  .popover-header {
+    color: var(--global-text-color); // Header text color
+    border-bottom: 1px solid var(--global-divider-color);
+  }
+
+  .popover-body {
+    color: var(--global-text-color); // Body text color
+  }
+}
+
+.bs-popover-top {
+  // arrow fill color
+  .arrow::after {
+    border-top-color: var(--global-bg-color);
+  }
+
+  // arrow border color
+  .arrow:before {
+    border-top-color: var(--global-divider-color);
+  }
+}
+
+.bs-popover-bottom {
+  // arrow fill color
+  .arrow::after {
+    border-bottom-color: var(--global-bg-color);
+  }
+
+  // arrow border color
+  .arrow:before {
+    border-bottom-color: var(--global-divider-color);
+  }
+}
+
+// Highlight search
+
+::highlight(search) {
+  background-color: var(--global-theme-color);
+  color: var(--global-text-color);
+}
+
+// Other utilities
+
+.unloaded {
+  display: none !important;
+}
+
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 999;
+}
+
+// Bio extras on the about page: lead paragraph, research-interest pills,
+// and a row of quick contact links.
+.about-lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--global-text-color);
+
+  strong {
+    color: var(--global-text-color);
+  }
+}
+
+.research-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.8rem 0 1.25rem;
+}
+
+.research-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  background-color: rgba(0, 54, 159, 0.06);
+  border: 1px solid rgba(0, 54, 159, 0.22);
+  color: #1e3a8a;
+
+  i {
+    font-size: 0.78rem;
+    color: rgba(0, 54, 159, 0.7);
+  }
+}
+
+.about-quicklinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1.5rem;
+
+  .quicklink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.95rem;
+    border-radius: 0.5rem;
+    background-color: var(--global-card-bg-color);
+    border: 1px solid var(--global-divider-color);
+    color: var(--global-text-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease,
+      box-shadow 0.18s ease;
+
+    i {
+      color: var(--global-theme-color);
+      font-size: 0.95rem;
+    }
+
+    &:hover {
+      background-color: var(--global-theme-color);
+      border-color: var(--global-theme-color);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 54, 159, 0.2);
+      text-decoration: none;
+
+      i {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+// Section title icons across the about-page cards. Each section CSS
+// scope below sets the icon color to match its accent.
+.card-title .section-icon {
+  margin-right: 0.5rem;
+  font-size: 0.95em;
+  vertical-align: -1px;
+}
+
+// Card spacing on the about page — bumped from Bootstrap's default mt-3
+// (1rem) to give each section more visual breathing room, matching the
+// rhythm used on the publications page.
+.about-page .card.mt-3 {
+  margin-top: 1.75rem !important;
+}
+
+// Header at the top of the about page — name + role subtitle. Navy accent
+// underline ties the page identity to the site theme color; subtitle gets
+// a small briefcase icon and a softer color to read as metadata.
+.about-header {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+
+  .post-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin-bottom: 0;
+    color: #0f172a;
+
+    .font-weight-bold {
+      color: var(--global-theme-color);
+      font-weight: 800;
+    }
+  }
+
+  .desc {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: var(--global-text-color-light);
+    margin-bottom: 0;
+    font-weight: 400;
+
+    .desc-icon {
+      color: var(--global-theme-color);
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
+
+    a {
+      color: var(--global-theme-color);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(0, 54, 159, 0.4);
+
+      &:hover {
+        text-decoration: none;
+        border-bottom-color: var(--global-theme-color);
+      }
+    }
+  }
+}
+
+// Greeting heading at the top of the bio column ("Hi, I am Yongjeong Oh").
+.about-greeting {
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin: 0 0 0.55rem;
+  color: var(--global-text-color);
+  letter-spacing: -0.005em;
+}
+
+// "Research Part" subheading inside the bio column — book icon + dark
+// label with a thin full-width underline that separates the heading from
+// the research pills below it.
+.about-research-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--global-text-color);
+  margin: 1.2rem 0 0.4rem;
+  padding-bottom: 0;
+
+  i {
+    color: var(--global-theme-color);
+    font-size: 1.05rem;
+  }
+}
+
+// Bio content column inside the merged about-bio-card — hosts the
+// greeting heading, bio paragraphs, the Research Part subheader and the
+// research pills. Tight paragraph rhythm matches the reference layout.
+.about-bio-content {
+  p {
+    margin-bottom: 0.7rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--global-text-color);
+  }
+
+  .research-pills {
+    margin-top: 0;
+    margin-bottom: 0.1rem;
+  }
+}
+
+// Education card on the about page — timeline-style entries with a navy
+// accent. Year on the left, degree + school + advisor / thesis stacked on
+// the right.
+.about-edu.card {
+  border-left: 3px solid #1e3a8a !important;
+}
+
+.about-edu .card-title .section-icon {
+  color: #1e3a8a;
+}
+
+.about-edu .card-title {
+  color: #172554 !important;
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.about-edu .edu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 1.55rem;
+    top: 0.6rem;
+    bottom: 0.6rem;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(30, 58, 138, 0), rgba(30, 58, 138, 0.45) 12%, rgba(30, 58, 138, 0.45) 88%, rgba(30, 58, 138, 0));
+  }
+
+  > .edu-item {
+    position: relative;
+    padding-left: 2rem;
+    padding-top: 0.45rem;
+    padding-bottom: 0.55rem;
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0.25rem;
+      top: 0.85rem;
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 50%;
+      background: #1e3a8a;
+      box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
+    }
+
+    & + .edu-item {
+      border-top: 1px dashed rgba(30, 58, 138, 0.18);
+    }
+  }
+
+  .edu-marker {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    width: 7.6rem;
+  }
+
+  .edu-year {
+    display: inline-block;
+    color: #172554;
+    background-color: rgba(30, 58, 138, 0.08);
+    border-radius: 0.3rem;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.16rem 0.3rem;
+    white-space: nowrap;
+  }
+
+  .edu-logo {
+    display: block;
+    width: 3.4rem;
+    height: 3.4rem;
+    object-fit: contain;
+  }
+
+  .edu-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.18rem;
+    line-height: 1.45;
+  }
+
+  .edu-degree {
+    color: var(--global-text-color);
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .edu-icon {
+    color: #1e3a8a;
+    font-size: 0.9rem;
+  }
+
+  .edu-school {
+    color: var(--global-theme-color);
+    font-size: 0.88rem;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .edu-meta {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--global-text-color-light);
+
+    i {
+      color: rgba(30, 58, 138, 0.7);
+      margin-right: 0.3rem;
+      font-size: 0.78rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(30, 58, 138, 0.4);
+
+      &:hover {
+        color: var(--global-theme-color);
+        border-bottom-color: var(--global-theme-color);
+      }
+    }
+  }
+}
+
+// Experience card on the about page — same timeline geometry as Education
+// but with a teal accent and wordmark-friendly logo container (since SUTD /
+// Deakin are wide wordmarks instead of square seals).
+.about-exp.card {
+  border-left: 3px solid #0d9488 !important;
+}
+
+.about-exp .card-title {
+  color: #115e59 !important;
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.about-exp .card-title .section-icon {
+  color: #0d9488;
+}
+
+.about-exp .exp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 1.55rem;
+    top: 0.6rem;
+    bottom: 0.6rem;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(13, 148, 136, 0), rgba(13, 148, 136, 0.45) 12%, rgba(13, 148, 136, 0.45) 88%, rgba(13, 148, 136, 0));
+  }
+
+  > .exp-item {
+    position: relative;
+    padding-left: 2rem;
+    padding-top: 0.45rem;
+    padding-bottom: 0.55rem;
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0.25rem;
+      top: 0.85rem;
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 50%;
+      background: #0d9488;
+      box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.18);
+    }
+
+    & + .exp-item {
+      border-top: 1px dashed rgba(13, 148, 136, 0.18);
+    }
+  }
+
+  .exp-marker {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    width: 7.6rem;
+  }
+
+  .exp-year {
+    display: inline-block;
+    color: #115e59;
+    background-color: rgba(13, 148, 136, 0.1);
+    border-radius: 0.3rem;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.16rem 0.3rem;
+    white-space: nowrap;
+  }
+
+  .exp-logo {
+    display: block;
+    width: 3.4rem;
+    height: 3.4rem;
+    object-fit: contain;
+  }
+
+  .exp-logo.exp-logo-wordmark {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 2.3rem;
+  }
+
+  .exp-logo[src*="deakin"] {
+    max-height: 1.85rem;
+  }
+
+  .exp-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.18rem;
+    line-height: 1.45;
+  }
+
+  .exp-position {
+    color: var(--global-text-color);
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .exp-icon {
+    color: #0d9488;
+    font-size: 0.9rem;
+  }
+
+  .exp-org {
+    color: var(--global-theme-color);
+    font-size: 0.88rem;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .exp-meta {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--global-text-color-light);
+
+    i {
+      color: rgba(13, 148, 136, 0.75);
+      margin-right: 0.3rem;
+      font-size: 0.78rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(13, 148, 136, 0.4);
+
+      &:hover {
+        color: var(--global-theme-color);
+        border-bottom-color: var(--global-theme-color);
+      }
+    }
+  }
+}
+
+// Awards card on the about page — same timeline geometry as News (amber
+// circles + line). Each row is clickable; clicking expands an attachment
+// area below where you can drop an <img> or PDF link per award. Gold tint
+// fits the trophy / honors framing.
+.about-awards.card {
+  border-left: 3px solid #d97706 !important;
+}
+
+.about-awards .card-title .section-icon {
+  color: #d97706;
+}
+
+.about-awards .card-title {
+  color: #92400e !important;
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+
+  a {
+    color: #92400e !important;
+  }
+}
+.about-awards .awards-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.3rem 0 0.3rem 1rem;
+  position: relative;
+
+  // Single continuous line — Awards is not scrollable, so we can run one
+  // line through the whole list (no clipping issues).
+  &::before {
+    content: "";
+    position: absolute;
+    left: calc(1.5rem - 1px);
+    top: 1.25rem;
+    bottom: 1.25rem;
+    width: 2px;
+    background-color: var(--global-divider-color);
+    z-index: 0;
+  }
+
+  > .award-item {
+    position: relative;
+    padding-left: 2rem;
+    line-height: 1.55;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: var(--global-bg-color);
+      border: 2px solid #d97706;
+      box-sizing: border-box;
+      z-index: 1;
+    }
+  }
+
+  .award-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.55rem 0.5rem 0.85rem 0;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    transition: background-color 0.18s ease;
+
+    &:hover {
+      background-color: rgba(217, 119, 6, 0.07);
+    }
+  }
+
+  .award-year {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: #92400e;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    padding-top: 0.2rem;
+    min-width: 3.5rem;
+    white-space: nowrap;
+  }
+
+  .award-body {
+    flex: 1;
+    color: var(--global-text-color);
+    font-size: 0.95rem;
+    padding-top: 0.05rem;
+    line-height: 1.45;
+  }
+
+  .award-sub {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--global-text-color-light);
+  }
+
+  .award-track {
+    display: inline-block;
+    margin-left: 0.35rem;
+    padding: 0.05rem 0.45rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: #92400e;
+    background-color: rgba(217, 119, 6, 0.12);
+    border-radius: 0.25rem;
+    vertical-align: 1px;
+  }
+
+  .award-chevron {
+    flex-shrink: 0;
+    color: var(--global-text-color-light);
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    transition: transform 0.2s ease;
+  }
+
+  .award-item.expanded .award-chevron {
+    transform: rotate(180deg);
+  }
+
+  .award-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.3s ease,
+      padding 0.3s ease;
+    padding: 0;
+    margin-bottom: 0.4rem;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.4rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .award-image {
+      display: block;
+      max-width: 100%;
+      max-height: 34rem;
+      width: auto;
+      height: auto;
+      margin: 0 auto;
+      object-fit: contain;
+      border-radius: 0.4rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+      background-color: var(--global-card-bg-color);
+    }
+
+    .award-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .award-images .award-image {
+      flex: 1 1 0;
+      min-width: 0;
+      max-height: 34rem;
+    }
+    @media (max-width: 576px) {
+      .award-images {
+        flex-direction: column;
+      }
+      .award-images .award-image {
+        flex: 1 1 auto;
+        width: 100%;
+      }
+    }
+
+    .award-pdf {
+      display: block;
+      width: 100%;
+      height: 32rem;
+      border: none;
+      border-radius: 0.4rem;
+      background-color: var(--global-card-bg-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .award-detail-placeholder {
+    display: block;
+    color: var(--global-text-color-light);
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
+    border-left: 2px dashed rgba(217, 119, 6, 0.45);
+    background-color: rgba(217, 119, 6, 0.05);
+    border-radius: 0 0.3rem 0.3rem 0;
+  }
+
+  .award-item.expanded .award-detail {
+    max-height: 80rem;
+    padding: 0.4rem 0 0.8rem;
+  }
+}
+
+// Invited Talks card on the about page.
+.about-talks.card {
+  border-left: 3px solid #0d9488 !important;
+}
+
+.about-talks .card-title {
+  color: #0f766e !important;
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.about-talks .card-title .section-icon {
+  color: #0d9488;
+}
+
+.about-talks .talks-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > .talk-item {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    padding: 0.65rem 0;
+  }
+
+  .talk-date {
+    flex-shrink: 0;
+    display: inline-block;
+    padding-top: 0.2rem;
+    min-width: 3.5rem;
+    white-space: nowrap;
+    color: #0f766e;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  .talk-body {
+    flex: 1;
+    color: var(--global-text-color);
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .talk-title {
+    display: block;
+    font-weight: 600;
+  }
+
+  .talk-meta {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--global-text-color-light);
+    font-size: 0.82rem;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(13, 148, 136, 0.4);
+
+      &:hover {
+        color: var(--global-theme-color);
+        border-bottom-color: var(--global-theme-color);
+      }
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .about-talks .talks-list {
+    > .talk-item {
+      gap: 0.55rem;
+    }
+  }
+}
+
+// Professional Services card on the about page — violet accent. Each row
+// pairs a role label (icon + name) on the left with a wrap of venue badges
+// on the right. Collapses to a stacked layout on narrow screens.
+.about-services.card {
+  border-left: 3px solid #8b5cf6 !important;
+}
+
+.about-services .card-title {
+  color: #6d28d9 !important;
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.about-services .card-title .section-icon {
+  color: #8b5cf6;
+}
+
+.about-services .services-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > .service-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.65rem 0;
+
+    & + .service-item {
+      border-top: 1px dashed rgba(139, 92, 246, 0.24);
+    }
+  }
+
+  .service-marker {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    width: 12rem;
+    padding-top: 0.2rem;
+  }
+
+  .service-icon {
+    color: #8b5cf6;
+    font-size: 0.95rem;
+  }
+
+  .service-label {
+    color: #5b21b6;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .service-body {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .service-venue {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.22rem 0.6rem;
+    border-radius: 0.4rem;
+    background-color: rgba(139, 92, 246, 0.09);
+    color: var(--global-text-color);
+    font-size: 0.8rem;
+    border: 1px solid rgba(139, 92, 246, 0.24);
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease;
+
+    &:hover {
+      background-color: rgba(139, 92, 246, 0.18);
+      border-color: rgba(139, 92, 246, 0.42);
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .about-services .services-list {
+    > .service-item {
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .service-marker {
+      width: auto;
+    }
+  }
+}
+
+// News card on the about page — sky-blue accent so this card reads as
+// distinct from the deep-navy Education and theme cards. Header has a
+// "View all" pill linking to the full news page plus a Collapsed/Expanded
+// toggle. Collapsed mode shows ~4 items with scroll, expanded shows all.
+.about-news.publications > .card {
+  border-left: 3px solid #0284c7 !important;
+}
+
+.about-news .card-title {
+  color: #075985 !important;
+
+  a {
+    color: #075985 !important;
+  }
+
+  .section-icon {
+    color: #0284c7;
+  }
+}
+
+.about-news .news-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.about-news .news-all-link {
+  color: #075985 !important;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 1.55rem;
+  padding: 0 0.7rem;
+  border-radius: 999px;
+  background-color: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.22);
+  box-sizing: border-box;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background-color: #0284c7;
+    color: #ffffff !important;
+    border-color: #0284c7;
+    transform: translateX(2px);
+    text-decoration: none;
+  }
+
+  i {
+    font-size: 0.65rem;
+  }
+}
+
+.about-news .news-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+
+  .card-title {
+    margin-bottom: 0;
+  }
+}
+
+.about-news .news-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  .news-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 2.4rem;
+    height: 1.3rem;
+    background-color: rgba(0, 0, 0, 0.18);
+    border-radius: 999px;
+    transition: background-color 0.2s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0.15rem;
+      top: 0.15rem;
+      width: 1rem;
+      height: 1rem;
+      background-color: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+      transition: transform 0.2s ease;
+    }
+  }
+
+  .news-toggle-label {
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
+    font-weight: 600;
+  }
+
+  &.expanded .news-toggle-switch {
+    background-color: #22c55e;
+
+    &::before {
+      transform: translateX(1.1rem);
+    }
+  }
+
+  &.expanded .news-toggle-label {
+    color: var(--global-text-color);
+  }
+}
+
+// Vertical timeline list inside the news card.
+// Geometry: with ul padding-left = 1rem and the marker (1rem wide) placed at
+// li::before { left: 0 }, each marker's centre lands at 1.5rem from the ul's
+// left edge. The line is centred at the same x via `calc(1.5rem - 1px)`.
+.about-news .news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.3rem 0 0.3rem 1rem;
+  position: relative;
+  max-height: 15rem;
+  overflow-y: auto;
+  transition: max-height 0.3s ease;
+
+  &.expanded {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  > .news-item {
+    position: relative;
+    padding: 0.55rem 0 0.55rem 2rem;
+    line-height: 1.55;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+
+    // Vertical line drawn per-item so it scrolls together with the list
+    // (a single ul::before would be clipped to the visible scroll area).
+    &::after {
+      content: "";
+      position: absolute;
+      left: calc(0.5rem - 1px);
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: var(--global-divider-color);
+      z-index: 0;
+    }
+
+    &:first-child::after {
+      top: 0.75rem;
+    }
+
+    &:last-child::after {
+      bottom: auto;
+      height: 1.25rem;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: var(--global-bg-color);
+      border: 2px solid #0284c7;
+      box-sizing: border-box;
+      z-index: 1;
+    }
+
+    &:last-child {
+      padding-bottom: 0.2rem;
+    }
+
+    .news-date {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: #075985;
+      font-weight: 700;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      padding-top: 0.2rem;
+      min-width: 3.4rem;
+    }
+
+    .news-content {
+      flex: 1;
+      color: var(--global-text-color);
+      font-size: 0.88rem;
+      padding-top: 0.05rem;
+      line-height: 1.55;
+    }
+  }
+
+  // Items that share the same YYYY.MM as the one above — render as
+  // visually-grouped sub-rows: hide the timeline circle and tighten only
+  // the top padding so the gap from the previous row is uniform whether
+  // the previous row is regular or another grouped row.
+  > .news-item-grouped {
+    padding-top: 0.25rem;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+// Wrapper inserted by JS so nav + search share one sticky position,
+// while still allowing visual spacing between them.
+.toc-sticky-wrap {
+  top: 8.5rem;
+  z-index: 1;
+  padding-right: 1.75rem;
+}
+
+#toc-sidebar {
+  z-index: 1;
+
+  .nav-link {
+    font-size: 0.88rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .nav .nav .nav-link {
+    font-size: 0.82rem;
+    padding-left: 1.25rem;
+  }
+}
+
+// The bib-search input (wrapped) is moved into .toc-sticky-wrap by JS so it
+// sticky-follows together with the nav while remaining visually separated.
+.toc-sticky-wrap > .bibsearch-wrap {
+  position: relative;
+  width: 100%;
+  margin-top: 3rem;
+
+  > i {
+    position: absolute;
+    left: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--global-text-color-light);
+    font-size: 0.8rem;
+    pointer-events: none;
+  }
+
+  > #bibsearch {
+    display: block;
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.65rem 0.35rem 1.85rem;
+    border-radius: 0.4rem;
+  }
+}
+
+.echarts {
+  height: 400px;
+  width: 100%;
+}
+
+.map {
+  height: 400px;
+  width: 100%;
+}
+
+swiper-container {
+  --swiper-navigation-color: var(--global-theme-color);
+  --swiper-pagination-color: var(--global-theme-color);
+  --swiper-pagination-bullet-inactive-color: var(--global-text-color);
+}
+
+.ps-root {
+  .ps-algorithm {
+    margin: 0.8em 0;
+    border-top: 3px solid var(--global-text-color);
+    border-bottom: 2px solid var(--global-text-color);
+  }
+
+  .ps-algorithm.with-caption > .ps-line:first-child {
+    border-bottom: 2px solid var(--global-text-color);
+  }
+}
+
+// Ninja Keys
+// for more options, check https://github.com/ssleptsov/ninja-keys?tab=readme-ov-file#css-variables
+ninja-keys {
+  --ninja-accent-color: var(--global-theme-color);
+  --ninja-icon-size: 0px;
+  --ninja-modal-background: var(--global-bg-color);
+  --ninja-z-index: 1031;
+}
+
+ninja-keys::part(ninja-input) {
+  color: var(--ninja-selected-text-color);
+}
+
+ninja-keys::part(ninja-input-wrapper) {
+  background: var(--global-bg-color);
+}
+
+// Books shelf
+
+figure.cover {
+  display: inline-block;
+  text-align: center;
+  margin: 0.5rem; /* adjust as needed */
+
+  img {
+    vertical-align: bottom;
+  }
+
+  figcaption.abandoned {
+    font-family: monospace;
+    color: #23212d;
+    text-transform: uppercase;
+    background-color: #ee5f5b;
+  }
+
+  figcaption.finished,
+  figcaption.watched {
+    font-family: monospace;
+    color: #23212d;
+    text-transform: uppercase;
+    background-color: #62c462;
+  }
+
+  figcaption.interested {
+    font-family: monospace;
+    color: #23212d;
+    text-transform: uppercase;
+    background-color: #7691db;
+  }
+
+  figcaption.paused {
+    font-family: monospace;
+    color: #23212d;
+    text-transform: uppercase;
+    background-color: #bdac7e;
+  }
+
+  figcaption.queued {
+    font-family: monospace;
+    color: #23212d;
+    text-transform: uppercase;
+    background-color: #9e76b5;
+  }
+
+  figcaption.reading,
+  figcaption.watching {
+    font-family: monospace;
+    color: #23212d;
+    text-transform: uppercase;
+    background-color: #f89406;
+  }
+
+  figcaption.reread,
+  figcaption.rewatch {
+    font-family: monospace;
+    color: #23212d;
+    text-transform: uppercase;
+    background-color: #a6517d;
+  }
+
+  figcaption.uncategorized {
+    font-family: monospace;
+    color: #23212d;
+    text-transform: uppercase;
+    background-color: #b0abb3;
+  }
+
+  /* mouse over link */
+  a.cover-link:hover {
+    color: #23212d !important;
+  }
+}
+
+// Calendar
+
+.calendar-toggle-btn {
+  background-color: #007acc;
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.calendar-toggle-btn:hover {
+  background-color: #005fa3;
+}
+
+.google-calendar-embed {
+  width: 100%;
+  height: 600px;
+  border: none;
+
+  @media (max-width: 768px) {
+    height: 500px;
+  }
+
+  @media (max-width: 480px) {
+    height: 400px;
+  }
+}
+
+mjx-container[jax="CHTML"][display="true"] {
+  overflow-x: auto;
+}

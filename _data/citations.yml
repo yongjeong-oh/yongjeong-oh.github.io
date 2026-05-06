@@ -1,0 +1,27 @@
+metadata:
+  last_updated: '2026-04-28'
+papers:
+  ZjFqe_cAAAAJ:qjMakFHDy7sC:
+    citations: 76
+    title: Communication-efficient federated learning via quantized compressed sensing
+    year: '2023'
+  ZjFqe_cAAAAJ:eQOLeE2rZwMC:
+    citations: 75
+    title: Joint source-channel coding for channel-adaptive digital semantic communications
+    year: '2025'
+  ZjFqe_cAAAAJ:IjCSPb-OGe4C:
+    citations: 35
+    title: 'FedVQCS: Federated learning via vector quantized compressed sensing'
+    year: '2024'
+  ZjFqe_cAAAAJ:Y0pCki6q_DkC:
+    citations: 28
+    title: Communication-efficient split learning via adaptive feature-wise compression
+    year: '2025'
+  ZjFqe_cAAAAJ:LkGwnXOMwfcC:
+    citations: 18
+    title: Vision transformer-based semantic communications with importance-aware quantization
+    year: '2025'
+  ZjFqe_cAAAAJ:roLk4NBRz8UC:
+    citations: 17
+    title: Blind Training for Channel-Adaptive Digital Semantic Communications
+    year: '2025'

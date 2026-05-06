@@ -1,0 +1,771 @@
+/*******************************************************************************
+ * Publication and bibliography styles
+ ******************************************************************************/
+
+@use "variables" as v;
+
+.publications {
+  margin-top: 0;
+
+  h1 {
+    color: var(--global-theme-color);
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+
+    span {
+      font-size: 1.5rem;
+    }
+  }
+
+  h2.bibliography {
+    color: var(--global-divider-color);
+    border-top: 1px solid var(--global-divider-color);
+    padding-top: 1rem;
+    margin-top: 2rem;
+    text-align: right;
+  }
+
+  ol.bibliography {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+
+    li {
+      margin-bottom: 1rem;
+
+      .preview {
+        display: inline-block;
+      }
+
+      .abbr {
+        margin-bottom: 0.5rem;
+
+        abbr {
+          display: inline-block;
+          background-color: var(--global-theme-color);
+          margin-bottom: 0.5rem;
+          color: var(--global-card-bg-color) !important;
+
+          a {
+            color: white;
+
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+
+        .award {
+          color: var(--global-theme-color) !important;
+          border: 1px solid var(--global-theme-color);
+        }
+      }
+
+      .title {
+        font-weight: bolder;
+      }
+
+      .author {
+        a {
+          border-bottom: 1px dashed var(--global-theme-color);
+
+          &:hover {
+            border-bottom-style: solid;
+            text-decoration: none;
+          }
+        }
+
+        > em {
+          border-bottom: 1px solid;
+          font-style: normal;
+        }
+
+        > span.more-authors {
+          color: var(--global-text-color-light);
+          border-bottom: 1px dashed var(--global-text-color-light);
+          cursor: pointer;
+
+          &:hover {
+            color: var(--global-text-color);
+            border-bottom: 1px dashed var(--global-text-color);
+          }
+        }
+      }
+
+      .links {
+        a.btn {
+          color: var(--global-text-color);
+          border: 1px solid var(--global-text-color);
+          padding-left: 1rem;
+          padding-right: 1rem;
+          padding-top: 0.25rem;
+          padding-bottom: 0.25rem;
+          margin-left: 0;
+
+          &:hover {
+            color: var(--global-theme-color);
+            border-color: var(--global-theme-color);
+          }
+        }
+        a.award.btn {
+          border-color: var(--global-highlight-color);
+        }
+      }
+
+      .badges {
+        padding-bottom: 0.5rem;
+        span {
+          display: inline-block;
+          color: v.$black-color;
+          height: 100%;
+          padding-right: 0.5rem;
+          vertical-align: middle;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .hidden {
+        font-size: 0.875rem;
+        max-height: 0px;
+        overflow: hidden;
+        text-align: justify;
+        transition-property: 0.15s ease;
+        -moz-transition: 0.15s ease;
+        -ms-transition: 0.15s ease;
+        -o-transition: 0.15s ease;
+        transition: all 0.15s ease;
+
+        p {
+          line-height: 1.4em;
+          margin: 10px;
+        }
+
+        pre {
+          font-size: 1em;
+          line-height: 1.4em;
+          padding: 10px;
+        }
+      }
+
+      .hidden.open {
+        max-height: 100em;
+        transition-property: 0.15s ease;
+        -moz-transition: 0.15s ease;
+        -ms-transition: 0.15s ease;
+        -o-transition: 0.15s ease;
+        transition: all 0.15s ease;
+      }
+
+      div.abstract.hidden {
+        border: dashed 1px var(--global-bg-color);
+      }
+
+      div.abstract.hidden.open {
+        border-color: var(--global-text-color);
+      }
+    }
+    div.award.hidden {
+      border: dashed 1px var(--global-bg-color);
+    }
+    div.award.hidden.open {
+      border-color: var(--global-highlight-color);
+    }
+  }
+}
+
+.citation,
+.citation-number {
+  color: var(--global-theme-color);
+}
+
+/* Publication cards (CV-style) with extra polish:
+   - left accent border on each card
+   - [N] number rendered as a gray pill
+   - author's own name highlighted with a soft green background
+   - link buttons (DOI/arXiv/PDF/Bib) styled as small tinted pills */
+.publications {
+  // When a TOC link is clicked the browser jumps to the targeted h3.
+  // Use a slightly smaller offset than the scroll-spy threshold so the
+  // clicked section ends up just past the trigger (and is therefore
+  // recognised as active rather than the previous one).
+  h3[id] {
+    scroll-margin-top: 50vh;
+  }
+
+  .card {
+    border-left: 3px solid var(--global-theme-color);
+    margin-bottom: 1.75rem;
+  }
+
+  .card-title {
+    font-size: 1.55rem;
+    margin-bottom: 1rem;
+    color: var(--global-theme-color) !important;
+    font-weight: 700;
+  }
+
+  // Use the full card width for each entry (the inner col-sm-10 was
+  // leaving an unused gap on the right that made long titles wrap).
+  .card .row {
+    margin-left: 0;
+    margin-right: 0;
+
+    > [class*="col-sm-"] {
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  // Author's own name — pink highlight pill (no underline)
+  .author em.self-author {
+    background-color: rgba(214, 51, 132, 0.12);
+    color: #d63384;
+    padding: 0.05rem 0.4rem;
+    border-radius: 0.25rem;
+    font-style: normal;
+    font-weight: 600;
+    border-bottom: none !important;
+  }
+
+  .card ol.bibliography {
+    margin-bottom: 0;
+    counter-reset: publication;
+
+    > li {
+      counter-increment: publication;
+      position: relative;
+      padding: 0.7rem 0 0.7rem 2.7rem;
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--global-divider-color);
+      border-radius: 0.4rem;
+      transition: background-color 0.18s ease;
+
+      &:hover {
+        background-color: rgba(0, 54, 159, 0.04);
+      }
+
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 0.25rem;
+      }
+
+      &:first-child {
+        padding-top: 0.25rem;
+
+        &::before {
+          top: 0.25rem;
+        }
+      }
+
+      .title {
+        font-size: 1.02rem;
+        line-height: 1.5;
+      }
+
+      .author {
+        font-size: 0.92rem;
+        color: rgba(0, 0, 0, 0.68);
+        line-height: 1.55;
+        margin-bottom: 0.1rem;
+      }
+
+      .periodical {
+        font-size: 0.92rem;
+        line-height: 1.55;
+        margin-bottom: 0.35rem;
+      }
+
+      // For preprints / entries without a periodical line, restore the
+      // wider gap between author line and the action buttons.
+      .author + .links {
+        margin-top: 0.25rem;
+      }
+
+      // [N] number — soft gray pill. Number itself is set by an inline script
+      // for reverse numbering.
+      &::before {
+        content: counter(publication);
+        position: absolute;
+        left: 0;
+        top: 0.85rem;
+        background-color: var(--global-divider-color);
+        color: var(--global-text-color-light);
+        border: none;
+        padding: 0.12rem 0.6rem;
+        border-radius: 999px;
+        font-size: 0.74rem;
+        font-weight: 600;
+        line-height: 1.4;
+        min-width: 2.1rem;
+        text-align: center;
+      }
+
+      // Award pill — same size/font/shape as Abstract & Paper, orange tint, no border.
+      .links a.award.btn {
+        gap: 0.32rem;
+        background-color: rgba(249, 115, 22, 0.14);
+        color: #c2410c;
+        border-color: transparent !important;
+
+        &:hover {
+          background-color: #ea580c;
+          color: #ffffff;
+          border-color: #ea580c !important;
+          box-shadow: 0 2px 6px rgba(234, 88, 12, 0.3);
+          text-decoration: none;
+        }
+
+        i {
+          font-size: 0.78rem;
+          line-height: 1;
+        }
+      }
+
+      // Expanded Award block — orange-accented card matching the abstract style.
+      div.award.hidden {
+        border: none !important;
+
+        &.open {
+          border: none !important;
+          border-left: 3px solid #ea580c !important;
+          padding: 0.8rem 1rem 0.8rem 0.85rem;
+          margin-top: 0.35rem;
+          margin-bottom: 0.4rem;
+          margin-right: 2.7rem;
+          font-size: 0.93rem;
+          line-height: 1.7;
+          color: var(--global-text-color);
+          background-color: var(--global-card-bg-color);
+          box-shadow: 0 2px 8px rgba(234, 88, 12, 0.18);
+          border-radius: 0.25rem;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+
+      // Impact-factor pill — green accent, only shown for high-IF (>=6) journals.
+      .links .impact-factor {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.32rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        padding: 0.22rem 0.7rem;
+        margin-right: 0.4rem;
+        line-height: 1;
+        border-radius: 999px;
+        background-color: rgba(34, 197, 94, 0.14);
+        color: #15803d;
+        border: 1px solid rgba(34, 197, 94, 0.45);
+        vertical-align: middle;
+        transform: translateY(-3px);
+
+        i {
+          font-size: 0.78rem;
+          line-height: 1;
+        }
+      }
+
+      // Citation count pill — sits right after the Paper button, amber accent.
+      .links .cite-count {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.32rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        padding: 0.22rem 0.7rem;
+        margin-right: 0.4rem;
+        line-height: 1;
+        border-radius: 999px;
+        background-color: rgba(250, 204, 21, 0.22);
+        color: #854d0e;
+        border: 1px solid rgba(202, 138, 4, 0.5);
+        vertical-align: middle;
+        transform: translateY(-3px);
+
+        i {
+          font-size: 0.85rem;
+          line-height: 1;
+        }
+      }
+
+      // Modern pill action buttons — neutral gray for both Abstract and Paper.
+      .links a.btn {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        padding: 0.22rem 0.8rem;
+        margin-right: 0.4rem;
+        margin-top: 0.1rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        background-color: rgba(0, 0, 0, 0.05);
+        color: rgba(0, 0, 0, 0.65);
+        transition:
+          background-color 0.18s ease,
+          color 0.18s ease,
+          border-color 0.18s ease,
+          box-shadow 0.18s ease;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.78);
+          color: #ffffff;
+          border-color: rgba(0, 0, 0, 0.78);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+          text-decoration: none;
+        }
+      }
+
+      // Expanded Abstract block: navy left-accent bar (matches the card),
+      // justified body, soft card-like shadow.
+      div.abstract.hidden {
+        border: none !important;
+
+        &.open {
+          border: none !important;
+          border-left: 3px solid var(--global-text-color) !important;
+          padding: 0.8rem 1rem 0.8rem 0.85rem;
+          margin-top: 0.35rem;
+          margin-bottom: 0.4rem;
+          margin-right: 2.7rem;
+          font-size: 0.93rem;
+          line-height: 1.7;
+          text-align: justify;
+          color: var(--global-text-color);
+          background-color: var(--global-card-bg-color);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+          border-radius: 0.25rem;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+    // Per-item override from inline script — reverse numbering
+    > li[style*="--pub-num"]::before {
+      content: var(--pub-num);
+    }
+  }
+}
+
+/* Selected Publications card grid on the about page — five compact cards
+ * in a row, each with a venue-colored gradient header and a clamped title
+ * underneath. Soft peach-orange accent — distinct from the amber gold
+ * Awards card and any blue family. */
+.about-selected.card {
+  border-left: 3px solid #fb923c !important;
+}
+
+.about-selected {
+  .card-title {
+    color: #9a3412 !important;
+    font-size: 1.55rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    .section-icon {
+      color: #fb923c;
+      margin-right: 0;
+    }
+  }
+
+  .sel-title-link {
+    color: inherit !important;
+    text-decoration: none;
+    cursor: default;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .sel-all-link {
+    margin-left: auto;
+    color: #9a3412 !important;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    height: 1.55rem;
+    padding: 0 0.7rem;
+    border-radius: 999px;
+    background-color: rgba(251, 146, 60, 0.1);
+    border: 1px solid rgba(251, 146, 60, 0.3);
+    box-sizing: border-box;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      background-color: #fb923c;
+      color: #ffffff !important;
+      border-color: #fb923c;
+      transform: translateX(2px);
+      text-decoration: none;
+    }
+
+    i {
+      font-size: 0.65rem;
+    }
+  }
+
+  // jekyll-scholar wraps each rendered template in <ol class="bibliography"><li>…</li></ol>.
+  // Convert that into a 5-column flex/grid of cards.
+  ol.bibliography {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.75rem;
+
+    > li {
+      padding: 0;
+      margin: 0;
+      border: none;
+      display: flex;
+
+      &::before,
+      &::after {
+        content: none !important;
+      }
+    }
+  }
+}
+
+.sel-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 0.8rem 0.85rem;
+  border-radius: 0.55rem;
+  background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  text-decoration: none !important;
+  color: inherit;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  border-top: 3px solid #fb923c;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(251, 146, 60, 0.18);
+    border-color: #fb923c;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .sel-card-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 1.4rem;
+  }
+
+  .sel-card-venue {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.3rem;
+    color: #9a3412;
+    background-color: rgba(251, 146, 60, 0.15);
+  }
+
+  .sel-card-tag {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.45rem;
+    border-radius: 0.3rem;
+
+    &.tag-submitted {
+      background-color: rgba(234, 88, 12, 0.12);
+      color: #c2410c;
+    }
+  }
+
+  .sel-card-trophy {
+    color: #d97706;
+    font-size: 0.78rem;
+    line-height: 1;
+  }
+
+  .sel-card-date {
+    margin-left: auto;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--global-text-color-light);
+  }
+
+  .sel-card-title {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--global-text-color);
+    min-height: calc(0.8rem * 1.4 * 4); // reserve up to 4 lines
+  }
+
+  .sel-card-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin: 0.5rem 0 0;
+    padding-top: 0.5rem;
+    border-top: 1px dashed rgba(251, 146, 60, 0.35);
+  }
+
+  .sel-card-topic {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.25rem;
+    background-color: rgba(251, 146, 60, 0.08);
+    color: #c2410c;
+    border: 1px solid rgba(251, 146, 60, 0.2);
+    white-space: nowrap;
+    box-shadow: none;
+    cursor: pointer;
+    transition:
+      background-color 0.18s ease,
+      border-color 0.18s ease,
+      color 0.18s ease;
+
+    &::before {
+      content: "#";
+      margin-right: 0.15rem;
+      opacity: 0.6;
+    }
+  }
+
+  .sel-card:hover .sel-card-topic {
+    background-color: rgba(251, 146, 60, 0.16);
+    border-color: rgba(251, 146, 60, 0.45);
+  }
+
+  .sel-card-authors {
+    margin: 0;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    color: var(--global-text-color-light) !important;
+    min-height: calc(0.72rem * 1.45 * 2); // reserve up to 2 author lines
+    padding-left: 0.3rem;
+    text-indent: -0.3rem; // hanging indent: first line flush, wrapped lines indented
+
+    .sel-card-author,
+    .sel-card-self {
+      white-space: nowrap;
+    }
+
+    .sel-card-author {
+      color: var(--global-text-color-light);
+    }
+  }
+
+  .sel-card-self {
+    color: var(--global-text-color);
+    font-style: normal;
+    font-weight: 700;
+    background-color: rgba(214, 51, 132, 0.1);
+    border-radius: 0.2rem;
+    padding: 0 0.25rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-selected ol.bibliography {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .about-selected ol.bibliography {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Slightly smaller typography on the standalone Publications page only —
+ * scoped via :not(.about-news) so the news card on the about page
+ * (which reuses the .publications wrapper) keeps its original sizing. */
+.publications:not(.about-news) {
+  .card-title {
+    font-size: 1.4rem;
+  }
+
+  .card ol.bibliography > li {
+    .title {
+      font-size: 0.94rem;
+    }
+
+    .author {
+      font-size: 0.85rem;
+    }
+
+    .periodical {
+      font-size: 0.85rem;
+    }
+
+    &::before {
+      font-size: 0.68rem;
+    }
+
+    .links a.btn,
+    .links .impact-factor,
+    .links .cite-count {
+      font-size: 0.65rem;
+    }
+
+    .links a.btn i,
+    .links .impact-factor i,
+    .links .cite-count i {
+      font-size: 0.72rem;
+    }
+
+    div.award.hidden.open {
+      font-size: 0.86rem;
+    }
+
+    .hidden {
+      font-size: 0.82rem;
+    }
+  }
+}
