@@ -9,7 +9,7 @@ function determineGiscusTheme() {
 
   let giscusAttributes = {
     src: "https://giscus.app/client.js",
-    "data-repo": "yongjeong-oh/yongjeong-oh.github.io",
+    "data-repo": "yongjeong-oh/homepage-source",
     "data-repo-id": "",
     "data-category": "Comments",
     "data-category-id": "",
